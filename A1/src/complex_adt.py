@@ -3,3 +3,6 @@
 #  @brief 
 #  @date 
 
+Class ComplexT:
+	x, y = 0, 0;
+
