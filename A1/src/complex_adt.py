@@ -24,7 +24,7 @@ class ComplexT:
 	def get_phi(self):
 		return 2*math.atan(self.y/(math.sqrt(self.x**2 + self.y**2)+self.x))
 
-	def equals(self,obj):
+	def equal(self,obj):
 		return (obj.real() == self.x) and (obj.imag() == self.y)
 
 	def conj(self):
