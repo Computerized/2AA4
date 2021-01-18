@@ -24,21 +24,21 @@ class ComplexT:
 	def get_phi(self):
 		return 2*math.atan(self.y/(math.sqrt(self.x**2 + self.y**2)+self.x))
 
-	def equals(self,obj):
+	def equal(self,obj):
 		return (obj.real() == self.x) and (obj.imag() == self.y)
 
 	def conj(self):
 		return ComplexT(self.x,-self.y)
 
 	def add(self,obj):
-		return ComplexT(self.x + obj.real, self.y + obj.imag)
+		return ComplexT(self.x + obj.real(), self.y + obj.imag())
 
 	def sub(self,obj):
-		return ComplexT(self.x - obj.real, self.y - obj.imag)
+		return ComplexT(self.x - obj.real(), self.y - obj.imag())
 
 	def mult(self,obj):
-		r = self.x * obj.real - self.y * obj.imag
-		i = self.x * obj.imag + self.y * obj.real
+		r = self.x * obj.real() - self.y * obj.imag()
+		i = self.x * obj.imag() + self.y * obj.real()
 		return ComplexT(r, i)
 
 	def recip(self):
