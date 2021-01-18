@@ -38,7 +38,7 @@ class TriangleT:
     ## @brief Computes the area of the triangle
     #  @return The area of the triangle
     def area(self):
-        p = perim()
+        p = self.perim()/2
         return math.sqrt(p*(p - self.a)*(p - self.b)*(p - self.c))
 
     ## @brief Determines whether the given triangle is possible in Euclidian space
