@@ -7,6 +7,7 @@ from complex_adt import ComplexT
 from triangle_adt import TriangleT, TriType
 import math
 
+<<<<<<< HEAD
 c1 = ComplexT(3,4)
 c2 = ComplexT(3,4)
 
@@ -127,3 +128,12 @@ def tri_type_test():
 
 passed = get_sides_test() + triangle_equal_test() + perim_test() + is_valid_test() + tri_type_test()
 print("triangle_adt: Passed " + str(passed) + " tests out of 5")
+=======
+complex = ComplexT(3,4)
+complex2 = ComplexT(3,4)
+print(complex.real())
+print(complex.imag())
+print(complex.get_r())
+print(complex.get_phi())
+print(complex.equal(complex2))
+>>>>>>> 2b2e8b96d13f185679b6e466bfe15456bc97a904
