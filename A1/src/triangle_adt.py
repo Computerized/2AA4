@@ -23,13 +23,16 @@ class TriangleT:
     # @brief Returns the side lengths of the triangle
     #  @return The three side lengths in a tuple
     def get_sides(self):
-        return self.a, self.b, self.c
+        sides = self.a, self.b, self.c
+        return sides
 
     # @brief Compares the current triangle and a given triangle
     #  @return True if the triangles are equal
     #  @param obj The triangle being compared to
     def equal(self, obj):
-        return (self.a, self.b, self.c == obj.get_sides())
+        objsides = obj.get_sides()
+        sides = self.a, self.b, self.c
+        return sorted(sides) == sorted(objsides)
 
     # @brief Sums the side lengths of all 3 sides
     #  @return The perimeter of the triangle
@@ -45,16 +48,26 @@ class TriangleT:
     # @brief Determines whether the given triangle is possible in Euclidian space
     #  @return True if the triangle is physically possible
     def is_valid(self):
-        return (self.a + self.b > self.c) and (self.a + self.c > self.b) and (self.b + self.c > self.a) and self.a > 0 and self.b > 0 and self.c > 0
+        if (self.a + self.b < self.c):
+            return False
+        if (self.a + self.c < self.b):
+            return False
+        if (self.b + self.c < self.a):
+            return False
+        if (self.a > 0 and self.b > 0 and self.c > 0):
+            return True
+        return False
 
     # @brief Determines the type of the triangle
     #  @return A TriType value representing the type of triangle
     def tri_type(self):
+        if (self.is_valid() == False):
+            return None
         if (self.a == self.b and self.a == self.c):
             return TriType.equilat
-        elif (self.a == self.b or self.b == self.c or self.a == self.c):
+        if (self.a == self.b or self.b == self.c or self.a == self.c):
             return TriType.isosceles
-        elif (self.a ** 2 + self.b ** 2 == self.c ** 2 or self.b ** 2 + self.c ** 2 == self.a ** 2 or self.a ** 2 + self.c ** 2 == self.b ** 2):
+        if (self.a ** 2 + self.b ** 2 == self.c ** 2 or self.b ** 2 + self.c ** 2 == self.a ** 2 or self.a ** 2 + self.c ** 2 == self.b ** 2):
             return TriType.right
         return TriType.scalene
 
