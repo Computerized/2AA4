@@ -1,15 +1,17 @@
-# @file complex_adt.py
+## @file complex_adt.py
 #  @author scotta30
 #  @brief Contains a class for representing a complex number
 #  @date 2021-01-13
 
 import math
 
-
+## @brief An ADT for complex numbers
+# @details This class represents a complex number composed of real and
+#          imaginary components
 class ComplexT:
     x, y = 0, 0
 
-    # @brief Constructor for ComplexT class
+    ## @brief Constructor for ComplexT class
     # @details This constructor creates an object which represents a complex
     #          number in the form a + bi.
     # @param x The real value of the complex number
@@ -18,25 +20,25 @@ class ComplexT:
         self.x = x
         self.y = y
 
-    # @brief Returns the real value of the complex number
+    ## @brief Returns the real value of the complex number
     # @details This function returns the stored real value of the complex number.
     # @return The real value of the number
     def real(self):
         return self.x
 
-    # @brief Returns the real value of the complex number
+    ## @brief Returns the real value of the complex number
     # @details This function returns the stored imaginary value of the complex number.
     # @return The imaginary value of the number
     def imag(self):
         return self.y
 
-    # @brief Returns radius of the complex number
+    ## @brief Returns radius of the complex number
     # @details This function returns the polar length of the complex number
     # @return The radius of the complex number
     def get_r(self):
         return math.sqrt(self.x**2 + self.y**2)
 
-    # @brief Returns angle of the complex number
+    ## @brief Returns angle of the complex number
     # @details This function returns the angle of the complex number
     # @return The angle of the complex number
     # @throws ZeroDivisionError if the denominator comes out to zero
@@ -47,7 +49,7 @@ class ComplexT:
         except ZeroDivisionError:
             print("Divide by zero error")
 
-    # @brief Checks if two numbers are equal
+    ## @brief Checks if two numbers are equal
     # @details This function determines if two complex numbers are equal by
     #          checking their respective real and imaginary values against
     #          eachother
@@ -56,14 +58,14 @@ class ComplexT:
     def equal(self, obj):
         return (obj.real() == self.x) and (obj.imag() == self.y)
 
-    # @brief Calculates the conjugate of the complex number
+    ## @brief Calculates the conjugate of the complex number
     # @details This function returns the reciprocal of the function by
     #          duplicating the current ComplexT, but with a negative imaginary
     # @return The reciprocal of the complex number
     def conj(self):
         return ComplexT(self.x, -self.y)
 
-    # @brief Adds two complex numbers
+    ## @brief Adds two complex numbers
     # @details This function returns the sum of two complex numbers by
     #          by creating a new complex number with the real and imaginary
     #          components respectively summed
@@ -71,7 +73,7 @@ class ComplexT:
     def add(self, obj):
         return ComplexT(self.x + obj.real(), self.y + obj.imag())
 
-    # @brief Subtracts two complex numbers
+    ## @brief Subtracts two complex numbers
     # @details This function returns the difference of two complex numbers by
     #          by creating a new complex number with the real and imaginary
     #          components respectively subtracted
@@ -79,7 +81,7 @@ class ComplexT:
     def sub(self, obj):
         return ComplexT(self.x - obj.real(), self.y - obj.imag())
 
-    # @brief Multiplies two complex numbers
+    ## @brief Multiplies two complex numbers
     # @details This function returns the product of two complex numbers by
     #          by creating a new complex number with the respective components
     #          multiplied by expansion.
@@ -90,7 +92,7 @@ class ComplexT:
         i = self.x * obj.imag() + self.y * obj.real()
         return ComplexT(r, i)
 
-    # @brief Reciprocal function
+    ## @brief Reciprocal function
     # @details This function returns the reciprocal of the current complex
     #          number.
     # @return The reciprocal of the complex number
@@ -98,7 +100,7 @@ class ComplexT:
         denom = self.x ** 2 + self.y ** 2
         return ComplexT(self.x/denom, -self.y/denom)
 
-    # @brief Divides two complex numbers
+    ## @brief Divides two complex numbers
     # @details This function returns the quotient of two complex numbers by
     #          by creating a new complex number that is the result of the
     #          complex number multiplied by the reciprocal of the input
@@ -107,7 +109,7 @@ class ComplexT:
     def div(self, obj):
         return mult(obj.recip)
 
-    # @brief Square root of the complex number
+    ## @brief Square root of the complex number
     # @details This function returns the square root of the complex number
     #          by computing the value of each respective component.
     # @return The square root of the complex number
