@@ -45,9 +45,11 @@ class ComplexT:
     #         (such as in the case of 0 + 0i)
     def get_phi(self):
         try:
-            return 2*math.atan(self.y/(math.sqrt(self.x**2 + self.y**2)+self.x))
+            out = 2*math.atan(self.y/(math.sqrt(self.x**2 + self.y**2)+self.x))
+            return out
         except ZeroDivisionError:
-            print("Divide by zero error")
+            print("Cannot divide by zero")
+            return None
 
     ## @brief Checks if two numbers are equal
     # @details This function determines if two complex numbers are equal by
@@ -95,10 +97,16 @@ class ComplexT:
     ## @brief Reciprocal function
     # @details This function returns the reciprocal of the current complex
     #          number.
+    # @throws ZeroDivisionError when x = y = 0
     # @return The reciprocal of the complex number
     def recip(self):
         denom = self.x ** 2 + self.y ** 2
-        return ComplexT(self.x/denom, -self.y/denom)
+        try:
+            out = ComplexT(self.x/denom, -self.y/denom)
+            return out
+        except ZeroDivisionError:
+            print("Cannot divide by zero")
+            return None
 
     ## @brief Divides two complex numbers
     # @details This function returns the quotient of two complex numbers by
@@ -107,14 +115,19 @@ class ComplexT:
     # @return The quotient of the complex numbers
     # @param obj The divisor
     def div(self, obj):
-        return mult(obj.recip)
+        rec = obj.recip()
+        if (rec == None):
+            return None
+        return self.mult(rec)
 
     ## @brief Square root of the complex number
     # @details This function returns the square root of the complex number
     #          by computing the value of each respective component.
     # @return The square root of the complex number
     def sqrt(self):
-        r = get_r()
+        if (self.y == 0):
+            return ComplexT(math.sqrt(self.x),0)
+        r = self.get_r()
         real = math.sqrt((r + self.x)/2)
-        imag = (self.y/math.abs(self.y))*math.sqrt((r - self.y)/2)
+        imag = (abs(self.y)/self.y)*math.sqrt((r - self.x)/2)
         return ComplexT(real, imag)
