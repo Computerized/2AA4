@@ -44,7 +44,8 @@ class TriangleT:
         return self.a + self.b + self.c
 
     ## @brief Computes the area of the triangle
-    #  @details Computes the area of the triangle using Heron's theorem
+    #  @details Computes the area of the triangle using Heron's theorem. Taken
+    #           from: https://www.mathsisfun.com/geometry/herons-formula.html
     #  @return The area of the triangle
     def area(self):
         p = self.perim()/2
@@ -53,7 +54,7 @@ class TriangleT:
     ## @brief Determines whether the given triangle is possible in Euclidian space
     #  @details This fuction tests if all the side lengths are greater than 0,
     #           and that no side length is greater than the sum of the other
-    #           two
+    #           two.
     #  @return True if the triangle is physically possible, False if otherwise
     def is_valid(self):
         if (self.a + self.b < self.c):

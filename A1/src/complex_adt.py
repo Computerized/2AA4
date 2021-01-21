@@ -7,7 +7,7 @@ import math
 
 ## @brief An ADT for complex numbers
 # @details This class represents a complex number composed of real and
-#          imaginary components
+#          imaginary components.
 class ComplexT:
     x, y = 0, 0
 
@@ -39,7 +39,11 @@ class ComplexT:
         return math.sqrt(self.x**2 + self.y**2)
 
     ## @brief Returns angle of the complex number
-    # @details This function returns the angle of the complex number
+    # @details This function returns the angle that the number makes with the
+    #          positive real axis. It assumes the angle is within 2 pi
+    #          radians. The function assumes the complex number is greater
+    #          than zero, and will return a None value in that case, otherwise
+    #          it would cause a ZeroDivisionError. 
     # @return The angle of the complex number
     # @throws ZeroDivisionError if the denominator comes out to zero
     #         (such as in the case of 0 + 0i)
@@ -96,7 +100,9 @@ class ComplexT:
 
     ## @brief Reciprocal function
     # @details This function returns the reciprocal of the current complex
-    #          number.
+    #          number. This method assumes that the length of the number
+    #          is greater than zero, and will return a None value if it is,
+    #          as a 0 length would cause a ZeroDivisionError.
     # @throws ZeroDivisionError when x = y = 0
     # @return The reciprocal of the complex number
     def recip(self):
@@ -111,7 +117,7 @@ class ComplexT:
     ## @brief Divides two complex numbers
     # @details This function returns the quotient of two complex numbers by
     #          by creating a new complex number that is the result of the
-    #          complex number multiplied by the reciprocal of the input
+    #          complex number multiplied by the reciprocal of the input.
     # @return The quotient of the complex numbers
     # @param obj The divisor
     def div(self, obj):
@@ -122,7 +128,10 @@ class ComplexT:
 
     ## @brief Square root of the complex number
     # @details This function returns the square root of the complex number
-    #          by computing the value of each respective component.
+    #          by computing the value of each respective component. The
+    #          function returns the positive square root of the complex
+    #          number, and omits the negative square root. Formula taken from
+    #          http://stanleyrabinowitz.com/bibliography/complexSquareRoot.pdf
     # @return The square root of the complex number
     def sqrt(self):
         if (self.y == 0):
