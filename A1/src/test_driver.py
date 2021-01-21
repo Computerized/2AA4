@@ -159,10 +159,17 @@ def recip_test():
 
 ## @brief Test for the div() function
 #  @details This function checks the output of the div() function. Tests the
-#           function against a regular number and against a zero division.
+#           function against a regular number, a self cancellation and a zero
+#           division. Due to the presence of a floating point inaccuracy, the
+#           components need only be withing a certain range of accuracy.
 #  @returns 1 if test is passed, 0 otherwise
 def div_test():
     did_pass = 1
+    ct = ComplexT(1,-3)
+    ct = ct.div(ComplexT(1,2))
+    if (abs(-1 - ct.real()) > 0.00001 or abs (-1 - ct.imag()) > 0.00001):
+        print("Failed div():normal test")
+        did_pass = 0
     if (not c1.div(c1).equal(ComplexT(1,0))):
         print("Failed div():self-cancellation test")
         did_pass = 0
