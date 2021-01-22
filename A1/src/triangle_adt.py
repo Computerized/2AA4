@@ -79,7 +79,9 @@ class TriangleT:
             return None
         if (self.a == self.b and self.a == self.c):
             return TriType.equilat
-        if (self.a ** 2 + self.b ** 2 == self.c ** 2 or self.b ** 2 + self.c ** 2 == self.a ** 2 or self.a ** 2 + self.c ** 2 == self.b ** 2):
+        sort_list = [self.a, self.b, self.c]
+        sort_list.sort()
+        if (sort_list[0]**2 + sort_list[1]**2 == sort_list[2]**2):
             return TriType.right
         if (self.a == self.b or self.b == self.c or self.a == self.c):
             return TriType.isosceles
