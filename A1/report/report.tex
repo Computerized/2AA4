@@ -16,8 +16,8 @@
 
 \newcounter{stepnum}
 
-\title{Assignment 1 Solution}
-\author{Your Name and macid}
+\title{2AA4 Assignment 1}
+\author{Alan Scott}
 \date{\today}
 
 \begin {document}
@@ -30,10 +30,17 @@ version of the two classes. The design restrictions for the assignment
 are critiqued and then various related discussion questions are answered.
 
 \section{Assumptions and Exceptions} \label{AssumptAndExcept}
+\subsection*{ComplexT}
+An assumption that was made in \verb|ComplexT| involves the angle in \verb|get_phi()|. It was assumed that the angle would fall within $[0,2\pi]$ radians. The other possible assumptions were instead covered by exceptions. The first exception was for \verb|get_phi()|, which in the case of real = imaginary = 0, would throw a ZeroDivisionError. In the event that this error occurs, the exception is caught, and the function will instead return a None value. The error catch aplies to \verb|recip()| as it will also throw a ZeroDivisionError in the case of real = imaginary = 0. This function will also return a None value. 
 
+\subsection*{TriangleT}
+For the triangle data type, it was assumed that the order of the sides would not matter. It was not assumed however that the independent side lengths would have to be valid (that is to say length $\geq$ 0), but rather the \verb|is_valid()| would handle it. Another assumption made was for the \verb|tri_type()| function. Since the function only returns a single type, it was assumed that the right triangle type should be prioritized over isosceles and scalene triangles in the case of overlaps, since right triangles are more specific. 
 
 \section{Test Cases and Rationale} \label{Testing}
-
+\subsection*{ComplexT}
+For the functions \verb|real(), imag(), get_r(), equal(), conj(), add(), sub()| and \verb|recip()|, there was only one test case tried (a generic answer) as there is very little complexity in the calculations. \verb|get_phi()| was tested against a generic function, but also against a boundary case of $0 + 0i$ since this input could throw a ZeroDivisionError. This case checked for a return of \textbf{None}, which was the expected type in the case of an exception. The \verb|mult()| function was tested against a generic answer, as well as a boundary case of multiplying by $0 + 0i$, which is expected to return 0 as a result of a zero multiplication, regardless of the current values of the real and imaginary values. \verb|recip()| was tested on a generic answer, as well as on a \verb|ComplexT| of $0 + 0i$, as this should cause a ZeroDivisionError. The test driver checked for a \textbf{None} return value, as this was the result of an error catch in the function. \verb|div()| was put through a generic case as well as two special cases. The first case was a self-cancellation test, which, regardless of the values entered, should always return a value of 1 ($1 + 0i$). The second was a case for a division by zero ($0 + 0i$), which should cause a ZeroDivisionError. The test driver checks for a \textbf{None} return value, as the function returns this when an exception is thrown. The \verb|sqrt()| function was tested against a generic tests, as well as two boundary cases. The first edge case tests the square root of a zero value, which should always return a zero value, as well as a test on just a regular number ($a+0i$), which should just return the square root of the component.
+\subsection*{TriangleT}
+The functions \verb|get_sides(), triangle_equals(), perim()| and \verb|area()| were checked against generic values as the computations they performed were relatively non-complex. The \verb|is_valid()| function was tested against a generic triangle, as well as two edge cases. The first case was for a triangle with a side length greater than the sum of the other two sides, and the other was against a triangle with negative sides. Since both of these triangles are invalid for different reasons, they should both return false. The \verb|tri_type()| function was tested against all types of triangles for their corresponding outputs, as well as the two invalid triangles tested in \verb|is_valid()|; since an invalid triangle cannot be considered to be any of the four types, it was expected that the function would return a \textbf{None} value.
 
 \section{Results of Testing Partner's Code}
 
@@ -41,12 +48,16 @@ are critiqued and then various related discussion questions are answered.
 \section{Critique of Given Design Specification}
 
 
+
 \section{Answers to Questions}
 
 \begin{enumerate}[(a)]
 
-\item 
-\item ...
+\item There are no setter functions in both \verb|ComplexT| and \verb|TriangleT|, as there exist no functions which mutate the values of any state variables, as all of the functions return values rather than modifying internal variables. \verb|ComplexT| has two getter functions, \verb|real()| and \verb|imag()|, both of which return the value of their respective state variables. \verb|TriangleT| has a single getter, \verb|get_sides()|, which returns the three values of the side lengths. 	
+\item Two possible state variables for \verb|ComplexT| are the radius \verb|r| or the angle \verb|phi|. Currently both of the possible state variables are represented by respective return methods. For the \verb|TriangleT| class, a possible state variable could be the type of triangle (ie isosceles, right, etc) or a variable representing whether or not the triangle is valid which can be used in other functions. 
+\item It would not make sense to add a greater/less than function for \verb|ComplexT| since complex numbers operate on 2 coordinate axes (real and imaginary), rather than just a single one, which the greater/less operator works on. 
+\item It is possible for the constructor to take in invalid values, such as having side lengths of 0 or less, or by having one side be longer than the sum of the other two. If the constructor detects invalid data, possibly by running the \verb|is_valid()| function, it can return a message informing the user that it they have constructed an invalid triangle. The class can then refused to execute any functions, either by using a state variable for triangle validity, or by calling the \verb|is_valid()| function before performin computations.
+\item A state variable for the type of triangle could be either good or bad depending on your implementation of the \verb|TriangleT| class. On the plus side, it would save you from having to call the \verb|tri_type()| function, as you would just have to access the variable through a getter method. One the flip side, if your implementation of \verb|TriangleT| has mutators for the side lengths, the state variable would need to be updated every time a side length is modified, making it easier just to compute the type whenever it's needed by \verb|tri_type()|.	
 
 \end{enumerate}
 
