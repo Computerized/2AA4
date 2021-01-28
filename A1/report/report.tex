@@ -31,7 +31,7 @@ are critiqued and then various related discussion questions are answered.
 
 \section{Assumptions and Exceptions} \label{AssumptAndExcept}
 \subsection*{ComplexT}
-An assumption that was made in \verb|ComplexT| involves the angle in \verb|get_phi()|. It was assumed that the angle would fall within $[0,2\pi]$ radians. The other possible assumptions were instead covered by exceptions. The first exception was for \verb|get_phi()|, which in the case of real = imaginary = 0, would throw a ZeroDivisionError. In the event that this error occurs, the exception is caught, and the function will instead return a None value. The error catch aplies to \verb|recip()| as it will also throw a ZeroDivisionError in the case of real = imaginary = 0. This function will also return a None value. 
+An assumption that was made in \verb|ComplexT| involves the angle in \verb|get_phi()|. It was assumed that the angle would fall within $[0,2\pi]$ radians. The other possible assumptions were instead covered by exceptions. The first exception was for \verb|get_phi()|, which in the case of real = imaginary = 0, would throw a ZeroDivisionError. In the event that this error occurs, the exception is caught, and the function will instead return a None value. The error catch applies to \verb|recip()| as it will also throw a ZeroDivisionError in the case of real = imaginary = 0. This function will also return a None value. 
 
 \subsection*{TriangleT}
 For the triangle data type, it was assumed that the order of the sides would not matter. It was not assumed however that the independent side lengths would have to be valid (that is to say length $\geq$ 0), but rather the \verb|is_valid()| would handle it. Another assumption made was for the \verb|tri_type()| function. Since the function only returns a single type, it was assumed that the right triangle type should be prioritized over isosceles and scalene triangles in the case of overlaps, since right triangles are more specific. 
@@ -43,11 +43,14 @@ For the functions \verb|real(), imag(), get_r(), equal(), conj(), add(), sub()| 
 The functions \verb|get_sides(), triangle_equals(), perim()| and \verb|area()| were checked against generic values as the computations they performed were relatively non-complex. The \verb|is_valid()| function was tested against a generic triangle, as well as two edge cases. The first case was for a triangle with a side length greater than the sum of the other two sides, and the other was against a triangle with negative sides. Since both of these triangles are invalid for different reasons, they should both return false. The \verb|tri_type()| function was tested against all types of triangles for their corresponding outputs, as well as the two invalid triangles tested in \verb|is_valid()|; since an invalid triangle cannot be considered to be any of the four types, it was expected that the function would return a \textbf{None} value.
 
 \section{Results of Testing Partner's Code}
-
+The first thing that happened when I ran the partner code was an AttributeError. This was a result of a misspelling of "isosceles" as "isoceles" in their \verb|TriType| class, which had to be corrected.
+\subsection*{ComplexT}
+Their \verb|get_phi()| method failed my test on a technicality, as they chose to interpret an invalid angle as 0, whereas I chose to return a \textbf{None} value; the method still functions properly otherwise. The \verb|mult()| function failed the test case for multiplying be zero, which should have returned a zero value ($0+0i$), but instead returned a nonzero value.  The \verb|recip()| and \verb|div()| tests failed for the same reason as \verb|get_phi()|, as they both returned a different value to indicate an error than they test driver was expecting. \verb|sqrt()| failed the regular test case due to a floating point inaccuracy, but otherwise functioned correctly. 
+\subsection*{TriangleT}
+The \verb|get_sides()| test failed as the partner code returned the three side lengths as a list, rather than as a tuple, as was specified. The \verb|get_area()| method failed as well, since the program did not halve the perimeter when using Heron's Formula. The \verb|tri_type()| method failed to identify isosceles and equilateral triangles, instead assigning them as right triangles, despite them not having any overlap. This is likely due to the use of rounding in their test for right triangles. The \verb|tri_type()| function also failed to check for invalid triangles before computing. 
 
 \section{Critique of Given Design Specification}
-
-
+One critique of the design specification is the vagueness of what to do in the event of exceptions. The specifications never clearly stated what to do in the event of invalid computations, such as with calling  \verb|div()| with a zero value. I chose to return a \textbf{None} value, whereas my partner return a string error message instead. This discrepancy in approach lead to the test driver failing in many cases despite the fact the functions reached the same logical conclusion. It was also not made clear what assumptions could be made as well, and this difference in assumptions could lead to significant differences between peoples' codes. 
 
 \section{Answers to Questions}
 
@@ -61,7 +64,7 @@ The functions \verb|get_sides(), triangle_equals(), perim()| and \verb|area()| w
 \item The usability of a product and its performance are directly linked; as performance increases, so does usability, as the user will generally prefer higher performance. 
 \item The process of rational development is an inherently ideal, and will therefore almost always needed to be faked. The client rarely knows exactly what they want, and many details only become clear as development progresses. Combined with human error and miscommunication, the establishment of a rigid design process straight from the start \textit{is} technically possible, yet extremely unlikely.
 \item Reusability is typically positively correlated with reliability, since in order for code to be reused, it must already be proven to be reliable.
-\item Programming levels perform abstractions on various levels. For example, with Object Oriented Programming Languages, an entire program can be abstracted into a data type (some kind of object), which contains various operations and sets of data. Programming languages also use functions/methods, which abstract a set of instructions into a single function/method call. The simplest operations (such as "x = 1 + 2") represent abstractions of data manipulation on the hardware level %fix this
+\item Programming levels perform abstractions on various levels. For example, with Object Oriented Programming Languages, an entire program can be abstracted into a data type (some kind of object), which contains various operations and sets of data. Programming languages also use functions/methods, which abstract a set of instructions into a single function/method call. The simplest syntactic operations (such as "x = 1 + 2") represent abstractions of many different mathematical operations on the hardware level.
 
 \end{enumerate}
 
