@@ -11,11 +11,14 @@ class Shape(ABC):
     def cm_x(self):
         pass
 
+    @abstractmethod
     def cm_y(self):
         pass
 
+    @abstractmethod
     def mass(self):
         pass
 
+    @abstractmethod
     def m_inert(self):
         pass
