@@ -5,6 +5,8 @@
 #  @details
 
 from Shape import Shape
+from scipy import integrate as ODE
+
 
 class Scene(Shape):
 
@@ -30,4 +32,13 @@ class Scene(Shape):
         self.vx, self.vy = vxprime, vyprime
 
     def sim(self, tfinal, nsteps):
+        t = []
+        for i in range(nsteps):
+            t.append((i * tfinal)/(nsteps-1))
+        out = ODE.odeint(ODE.ode,[self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
+        return t, out
+
+    def ode(self, w, t):
         pass
+
+

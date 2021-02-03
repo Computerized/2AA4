@@ -19,6 +19,6 @@ class Shape(ABC):
     def mass(self):
         pass
 
-    @abstractmethod
+    @abstractmethod 
     def m_inert(self):
         pass
