@@ -38,7 +38,7 @@ class Scene(Shape):
         out = ODE.odeint(ODE.ode,[self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
         return t, out
 
-    def ode(self, w, t):
-        pass
+    def __ode__(self, w, t):
+        return [w[2], w[3], self.fx/self.s.mass, self.fy/self.s.mass]
 
 
