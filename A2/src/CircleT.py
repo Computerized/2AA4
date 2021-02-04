@@ -10,7 +10,7 @@ class CircleT(Shape):
 
     def __init__(self,xs,ys,rs,ms):
         if (not (rs > 0 and ms > 0)):
-            raise Exception("ValueError")
+            raise ValueError
         self.x = xs
         self.y = ys
         self.r = rs

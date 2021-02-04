@@ -10,7 +10,7 @@ class TriangleT(Shape):
 
     def __init__(self,xs,ys,ss,ms):
         if (not (ss > 0 and ms > 0)):
-            raise Exception("ValueError")
+            raise ValueError
         self.x, self.y, self.s, self.m = xs, ys, ss, ms
 
     def cm_x(self):
