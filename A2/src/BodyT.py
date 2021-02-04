@@ -16,7 +16,8 @@ class BodyT(Shape):
         self.cmx = self.__cm__(xs,ms)
         self.cmy = self.__cm__(ys,ms)
         self.m = self.__sum__(ms)
-        self.moment = (self.__mmom__(xs,ys,ms)-self.__sum__(ms)*(self.__cm__(xs,ms)**2+self.__cm__(ys,ms)**2))
+        self.moment = (self.__mmom__(xs,ys,ms) - self.__sum__(ms)*(self.__cm__(xs,ms)**2
+        + self.__cm__(ys,ms)**2))
         
 
     def cm_x(self):
