@@ -6,14 +6,18 @@
 from Shape import Shape
 
 class BodyT(Shape):
-    cmx, cmy, m, moment = 0.0, 0.0, 0.0, 0.0
 
-    def __init__(self,xs,ys,ms,):
+    def __init__(self,xs,ys,ms):
         if (not (len(xs) == len(ys) and (len(ys) == len(ms)))):
-            raise Exception("ValueError")
+            raise ValueError
         for i in range(len(ms)):
             if (ms[i] <= 0):
-                raise Exception("ValueError")
+                raise ValueError
+        self.cmx = self.__cm__(xs,ms)
+        self.cmy = self.__cm__(ys,ms)
+        self.m = self.__sum__(ms)
+        self.moment = (self.__mmom__(xs,ys,ms)-self.__sum__(ms)*(self.__cm__(xs,ms)**2+self.__cm__(ys,ms)**2))
+        
 
     def cm_x(self):
         return self.cmx
@@ -27,19 +31,19 @@ class BodyT(Shape):
     def m_inert(self):
         return self.moment
 
-    def sum(self,m):
+    def __sum__(self,m):
         sumOut = 0.0
         for i in m:
             sumOut += i
         return sumOut
 
-    def cm(self,z,m):
+    def __cm__(self,z,m):
         sumOut = 0.0
         for i in range(len(m)):
             sumOut += z[i]*m[i]
         return sumOut/sum(m)
 
-    def mmom(self,x,y,m):
+    def __mmom__(self,x,y,m):
         sumOut = 0.0
         for i in range(len(m)):
             sumOut += m[i] * (x[i]**2 + y[i]**2)
