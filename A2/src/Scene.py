@@ -35,7 +35,7 @@ class Scene(Shape):
         t = []
         for i in range(nsteps):
             t.append((i * tfinal)/(nsteps-1))
-        out = ODE.odeint(self.__ode__,[self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
+        out = ODE.odeint(self.__ode__(),[self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
         return t, out
 
     def __ode__(self, w, t):
