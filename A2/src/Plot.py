@@ -1,6 +1,6 @@
-## @file
-#  @author
-#  @brief
+## @file Plot.py
+#  @author Alan Scott
+#  @brief Function for generating matplot plots
 #  @date
 #  @details
 

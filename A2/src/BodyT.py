@@ -13,11 +13,11 @@ class BodyT(Shape):
         for i in range(len(ms)):
             if (ms[i] <= 0):
                 raise ValueError
-        self.cmx = self.__cm__(xs,ms)
-        self.cmy = self.__cm__(ys,ms)
+        self.cmx = self.cm(xs,ms)
+        self.cmy = self.cm(ys,ms)
         self.m = sum(ms)
-        self.moment = (self.__mmom__(xs,ys,ms) - sum(ms)*(self.__cm__(xs,ms)**2
-        + self.__cm__(ys,ms)**2))
+        self.moment = (self.mmom(xs,ys,ms) - sum(ms)*(self.cm(xs,ms)**2
+        + self.cm(ys,ms)**2))
         
 
     def cm_x(self):
@@ -32,13 +32,13 @@ class BodyT(Shape):
     def m_inert(self):
         return self.moment
 
-    def __cm__(self,z,m):
+    def cm(self,z,m):
         sumOut = 0.0
         for i in range(len(m)):
             sumOut += z[i]*m[i]
         return sumOut/sum(m)
 
-    def __mmom__(self,x,y,m):
+    def mmom(self,x,y,m):
         sumOut = 0.0
         for i in range(len(m)):
             sumOut += m[i] * (x[i]**2 + y[i]**2)
