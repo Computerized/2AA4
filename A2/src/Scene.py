@@ -28,13 +28,13 @@ class Scene(Shape):
     ## @brief Horizontal force function
     #  @details This function calculates the horizontal force.
     #  @param t The time given
-    def Fx(self, t):
+    def __Fx__(self, t):
         return 5 if t < 5 else 0
 
     ## @brief Vertical force function
     #  @details This function calculates the vertical force.
     #  @param t The time given
-    def Fy(self, t):
+    def __Fy__(self, t):
         return -self.g * self.m if t < 3 else self.g * self.m
 
     ## @brief Inherited cm_x function
@@ -106,12 +106,12 @@ class Scene(Shape):
         t = []
         for i in range(nsteps):
             t.append((i * tfinal) / (nsteps - 1))
-        out = odei.odeint(self.ode, [self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
+        out = odei.odeint(self.__ode__, [self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
         return t, out
 
     ## @brief Ordinary differential equation constructor
     #  @details This function creates an ordinary differential equation.
     #  @param w Input array
     #  @param t Given time
-    def ode(self, w, t):
-        return [w[2], w[3], self.Fx(t) / self.s.mass(), self.Fy(t) / self.s.mass()]
+    def __ode__(self, w, t):
+        return [w[2], w[3], self.__Fx__(t) / self.s.mass(), self.__Fy__(t) / self.s.mass()]

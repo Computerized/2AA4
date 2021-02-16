@@ -24,11 +24,11 @@ class BodyT(Shape):
         for i in range(len(ms)):
             if (ms[i] <= 0):
                 raise ValueError
-        self.cmx = self.cm(xs, ms)
-        self.cmy = self.cm(ys, ms)
+        self.cmx = self.__cm__(xs, ms)
+        self.cmy = self.__cm__(ys, ms)
         self.m = sum(ms)
-        self.moment = self.mmom(xs, ys, ms) - sum(ms)
-        self.moment *= (self.cm(xs, ms)**2 + self.cm(ys, ms)**2)
+        self.moment = self.__mmom__(xs, ys, ms) - sum(ms)
+        self.moment *= (self.__cm__(xs, ms)**2 + self.__cm__(ys, ms)**2)
 
     ## @brief Inherited cm_x function from Shape
     #  @details This function is inherited from the parent class. It returns the x value
@@ -54,13 +54,13 @@ class BodyT(Shape):
     def m_inert(self):
         return self.moment
 
-    ## @brief Dual array summation
+    ## @brief Centre of mass calculation
     #  @details This function takes two arrays and finds the sum of the elements
     #           of two equally sized arrays. It then divides this sum by the sum of
     #           the mass array.
     #  @param z First array
     #  @param m Second array
-    def cm(self, z, m):
+    def __cm__(self, z, m):
         sumout = 0.0
         for i in range(len(m)):
             sumout += z[i] * m[i]
@@ -72,7 +72,7 @@ class BodyT(Shape):
     #  @param x Array of x values
     #  @param y Array of y values
     #  @param m Array of masses
-    def mmom(self, x, y, m):
+    def __mmom__(self, x, y, m):
         sumout = 0.0
         for i in range(len(m)):
             sumout += m[i] * (x[i]**2 + y[i]**2)
