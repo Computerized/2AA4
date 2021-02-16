@@ -66,20 +66,6 @@ def test_body_mass():
 def test_body_inert():
     assert body1.m_inert() == 400.0
 
-def test_body_cm():
-    assert body1.cm([1,-1,1],[2,1,2]) == 0.6
-
-def test_body_cm_except():
-    with pytest.raises(IndexError):
-        body1.cm([1,2,3],[2,1,-1,2])
-
-def test_body_mmom():
-    assert body1.mmom([1,2,3],[2,1,2],[2,0,1]) == 23.0
-
-def test_body_mmom_except():
-    with pytest.raises(IndexError):
-        body1.mmom([1,2,3],[2,2],[2,0,1])
-
 def test_body_except_length():
     with pytest.raises(ValueError):
         BodyT([1,2,3],[3],[2,2,2])
@@ -120,14 +106,20 @@ def test_scene_setvelos():
     a,b = scene1.get_init_velo()
     assert a == 1 and b == -2
 
-def closeEnough(xcalc,xtrue,e):
-    return abs(xcalc-xtrue)/abs(xtrue) < e
+def closeEnough(xcalc,xtrue):
+    return abs(xcalc-xtrue)/abs(xtrue) < 10**-4
+
+a,b = scene1.sim(1,10)
 
 def test_scene_sim():
-    a,b = scene1.sim(1,10)
-    assert closeEnough(a[1],1/9,10**(-4)) and closeEnough(a[9],1.0,10**(-4))
+    assert closeEnough(a[1],1/9) and closeEnough(a[9],1.0)
+
+def test_scene_sim2():
+    assert closeEnough(b[0][2],1.0)
+
+def test_scene_sim3():
+    assert closeEnough(b[6][2],8/3)
 
 def test_scene_sim_zero():
     with pytest.raises(ZeroDivisionError):
         scene1.sim(1,1)
-
