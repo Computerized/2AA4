@@ -1,12 +1,19 @@
 ## @file Plot.py
 #  @author Alan Scott
 #  @brief Function for generating matplot plots
-#  @date
-#  @details
+#  @date 16/02/21
+#  @details This file contains a single function which plots a series of x, y, and y
+#           relations on 3 graphs on 1 window.
 
 import matplotlib.pyplot as plt
 
-def plot(w,t):
+
+## @brief Plot function
+#  @details This function plots 3 different graphs of x vs t, y vs t and x vs y. It does so
+#           on 1 window using 3 vertically oriented subplots.
+#  @param w 2D array containing pairs of x and y coordinates
+#  @param t Array contain all the values of t
+def plot(w, t):
     x = []
     y = []
     for item in w:
@@ -16,11 +23,11 @@ def plot(w,t):
     plt.subplot(311)
     plt.xlabel("x(t)")
     plt.ylabel("t")
-    plt.plot(t,x)
+    plt.plot(t, x)
     plt.subplot(312)
     plt.xlabel("y(t)")
     plt.ylabel("t")
-    plt.plot(t,y)
+    plt.plot(t, y)
     plt.subplot(313)
     plt.xlabel("x(t)")
     plt.ylabel("y(t)")

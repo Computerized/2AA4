@@ -5,10 +5,20 @@
 
 from Shape import Shape
 
-class TriangleT(Shape):
-    x,y,s,m = 0.0,0.0,0.0,0.0
 
-    def __init__(self,xs,ys,ss,ms):
+class TriangleT(Shape):
+    x, y, s, m = 0.0, 0.0, 0.0, 0.0
+
+    ## @brief TriangleT Constructor
+    #  @details This constructer creates a TriangleT type object. It takes in parameters
+    #           for the x and y coordinates, side lengths and mass. If the side lengths
+    #           or mass are below zero, then it throws a ValueError.
+    #  @throws ValueError when side lengths or mass are not greater than zero
+    #  @param xs x coordinate of the triangle
+    #  @param ys y coordinate of the triangle
+    #  @param ss side lengths of the triangle
+    #  @param ms mass of the triangle
+    def __init__(self, xs, ys, ss, ms):
         if (not (ss > 0 and ms > 0)):
             raise ValueError
         self.x, self.y, self.s, self.m = xs, ys, ss, ms
@@ -35,4 +45,4 @@ class TriangleT(Shape):
     #  @details This function is inherited from the Shape class. It returns the value
     #           of the moment of inertia.
     def m_inert(self):
-        return (self.m * self.s**2)/12
+        return (self.m * self.s**2) / 12

@@ -3,10 +3,10 @@
 #  @brief Scene class
 #  @date 16/02/21
 #  @details This class represents a "scene" with a shape. It then simulates the motion
-#           of the body given forces, initial velocity and other factors. 
+#           of the body given forces, initial velocity and other factors.
 
 from Shape import Shape
-from scipy import integrate as ODE
+from scipy import integrate as odei
 
 
 class Scene(Shape):
@@ -19,21 +19,22 @@ class Scene(Shape):
     #  @param sprime Initial horizontal velocity
     #  @param sprime Initial horizontal velocity
     def __init__(self, sprime, fxprime, fyprime, vxprime, vyprime):
-        self.s, self.fx, self.fy, self.vx, self.vy = sprime, fxprime, fyprime, vxprime, vyprime
+        self.s, self.fx, self.fy = sprime, fxprime, fyprime
+        self.vx, self.vy = vxprime, vyprime
 
     g = 9.81  # accel due to gravity (m/s^2)
     m = 1  # mass (kg)
 
     ## @brief Horizontal force function
-    #  @details This function calculates the horizontal force. 
+    #  @details This function calculates the horizontal force.
     #  @param t The time given
-    def Fx(self,t):
+    def Fx(self, t):
         return 5 if t < 5 else 0
 
     ## @brief Vertical force function
-    #  @details This function calculates the vertical force. 
+    #  @details This function calculates the vertical force.
     #  @param t The time given
-    def Fy(self,t):
+    def Fy(self, t):
         return -self.g * self.m if t < 3 else self.g * self.m
 
     ## @brief Inherited cm_x function
@@ -66,13 +67,13 @@ class Scene(Shape):
         return self.s
 
     ## @brief Unbalanced forces return function
-    #  @details This function returns the values of the x and y unbalanced forces. 
+    #  @details This function returns the values of the x and y unbalanced forces.
     def get_unbal_forces(self):
         return self.fx, self.fy
 
     ## @brief Initial velocity return function
     #  @details This function returns the values of the x and y values of the initial
-    #           velocities. 
+    #           velocities.
     def get_init_velo(self):
         return self.vx, self.vy
 
@@ -97,7 +98,7 @@ class Scene(Shape):
         self.vx, self.vy = vxprime, vyprime
 
     ## @brief Physics simulation function
-    #  @details This function simulates the motion of the body. It does so by integrating the 
+    #  @details This function simulates the motion of the body. It does so by integrating the
     #           function over t through an approximation.
     #  @param tfinal Final value of t
     #  @param nsteps Number of increments
@@ -105,7 +106,7 @@ class Scene(Shape):
         t = []
         for i in range(nsteps):
             t.append((i * tfinal) / (nsteps - 1))
-        out = ODE.odeint(self.ode,[self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
+        out = odei.odeint(self.ode, [self.s.cm_x(), self.s.cm_y(), self.vx, self.vy], t)
         return t, out
 
     ## @brief Ordinary differential equation constructor
@@ -113,6 +114,4 @@ class Scene(Shape):
     #  @param w Input array
     #  @param t Given time
     def ode(self, w, t):
-        return [w[2], w[3], self.Fx(t)/self.s.mass(), self.Fy(t)/self.s.mass()]
-
-
+        return [w[2], w[3], self.Fx(t) / self.s.mass(), self.Fy(t) / self.s.mass()]

@@ -7,9 +7,18 @@ from Shape import Shape
 
 
 class CircleT(Shape):
-    x,y,r,m = 0.0,0.0,0.0,0.0
+    x, y, r, m = 0.0, 0.0, 0.0, 0.0
 
-    def __init__(self,xs,ys,rs,ms):
+    ## @brief CicleT Constructor
+    #  @details This constructor creates the CircleT object. It takes in values
+    #           of the x and y coordinates, the radius and the mass. If the values
+    #           of the mass or radius are not above zero, then a ValueError is thrown.
+    #  @throws ValueError when the radius or mass are not above zero.
+    #  @param xs x value of the circle
+    #  @param ys y value of the circle
+    #  @param rs radius of the circle
+    #  @param mass of the circle
+    def __init__(self, xs, ys, rs, ms):
         if (not (rs > 0 and ms > 0)):
             raise ValueError
         self.x = xs
@@ -39,4 +48,4 @@ class CircleT(Shape):
     #  @details This function is inherited from the parent class, and returns the
     #           moment of inertia of the circle.
     def m_inert(self):
-        return (self.m*self.r**2)/2
+        return (self.m * self.r**2) / 2

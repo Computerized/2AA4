@@ -1,24 +1,35 @@
 ## @file BodyT.py
 #  @author Alan Scott
-#  @brief
-#  @date
+#  @brief Body class
+#  @date 16/02/21
 
 from Shape import Shape
 
+
 class BodyT(Shape):
 
-    def __init__(self,xs,ys,ms):
+    ## @brief BodyT Constructor
+    #  @details This constructor creates an the BodyT object from the parameters of
+    #           the center of mass and the mass. If the values of the mass and the
+    #           centers of mass are not of equal size, a Value error is thrown. The
+    #           center of mass, total mass, and the moment of inertia are calculated
+    #           in the constructor using class functions.
+    #  @throws ValueError when the lengths of the x, y and mass are not the same.
+    #  @param xs The set of x coordinates of the centers of mass
+    #  @param ys The set of y coordinates of the centers of mass
+    #  @param xs The set of masses
+    def __init__(self, xs, ys, ms):
         if (not (len(xs) == len(ys) and (len(ys) == len(ms)))):
             raise ValueError
         for i in range(len(ms)):
             if (ms[i] <= 0):
                 raise ValueError
-        self.cmx = self.cm(xs,ms)
-        self.cmy = self.cm(ys,ms)
+        self.cmx = self.cm(xs, ms)
+        self.cmy = self.cm(ys, ms)
         self.m = sum(ms)
-        self.moment = (self.mmom(xs,ys,ms) - sum(ms)*(self.cm(xs,ms)**2
-        + self.cm(ys,ms)**2))
-        
+        self.moment = self.mmom(xs, ys, ms) - sum(ms)
+        self.moment *= (self.cm(xs, ms)**2 + self.cm(ys, ms)**2)
+
     ## @brief Inherited cm_x function from Shape
     #  @details This function is inherited from the parent class. It returns the x value
     #           of the center of mass.
@@ -46,23 +57,23 @@ class BodyT(Shape):
     ## @brief Dual array summation
     #  @details This function takes two arrays and finds the sum of the elements
     #           of two equally sized arrays. It then divides this sum by the sum of
-    #           the mass array. 
+    #           the mass array.
     #  @param z First array
     #  @param m Second array
-    def cm(self,z,m):
-        sumOut = 0.0
+    def cm(self, z, m):
+        sumout = 0.0
         for i in range(len(m)):
-            sumOut += z[i]*m[i]
-        return sumOut/sum(m)
+            sumout += z[i] * m[i]
+        return sumout / sum(m)
 
     ## @brief Pythagorean summation
     #  @details This function sums the square of each element of the x and y arrays
-    #           multiplied by the respictive value of the mass. 
+    #           multiplied by the respictive value of the mass.
     #  @param x Array of x values
     #  @param y Array of y values
     #  @param m Array of masses
-    def mmom(self,x,y,m):
-        sumOut = 0.0
+    def mmom(self, x, y, m):
+        sumout = 0.0
         for i in range(len(m)):
-            sumOut += m[i] * (x[i]**2 + y[i]**2)
-        return sumOut
+            sumout += m[i] * (x[i]**2 + y[i]**2)
+        return sumout
