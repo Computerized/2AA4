@@ -12,6 +12,9 @@ from TriangleT import TriangleT
 from BodyT import BodyT
 from Scene import Scene
 
+g = 9.81  # accel due to gravity (m/s^2)
+m = 1  # mass (kg)
+
 circle = CircleT(1.0, 10.0, 0.5, 1.0)
 
 def test_circle_cmx():
@@ -64,7 +67,7 @@ def test_body_mass():
     assert body1.mass() == 6.0
 
 def test_body_inert():
-    assert body1.m_inert() == 400.0
+    assert body1.m_inert() == 8.0
 
 def test_body_except_length():
     with pytest.raises(ValueError):
@@ -75,9 +78,20 @@ def test_body_except_mass():
         BodyT([1,2,3],[3,3,3],[2,-1,2])
 
 ###############################################
+def ifuncx(x):
+    return x
+
+def ifuncy(y):
+    return y
+
+def funcx(x):
+    return 5 if x < 5 else 0
+
+def funcy(y):
+    return -g * m if y < 3 else g * m
 
 circle2 = CircleT(0,0,3,2)
-scene1 = Scene(circle2, 3, 4, 1, 0)
+scene1 = Scene(circle2, ifuncx, ifuncy, 1, 0)
 
 def test_scene_getshape():
     assert (scene1.get_shape().cm_x() == circle2.cm_x() and scene1.get_shape().cm_y() == circle2.cm_y()
@@ -85,7 +99,7 @@ def test_scene_getshape():
 
 def test_scene_getforces():
     a,b = scene1.get_unbal_forces()
-    assert a == 3 and b == 4
+    assert a == ifuncx and b == ifuncy
 
 def test_scene_getvelos():
     a,b = scene1.get_init_velo()
@@ -97,9 +111,9 @@ def test_scene_setshape():
     assert scene1.get_shape() == triangle
 
 def test_scene_setforces():
-    scene1.set_unbal_forces(-1,2)
+    scene1.set_unbal_forces(funcx,funcy)
     a,b = scene1.get_unbal_forces()
-    assert a == -1 and b == 2
+    assert a == funcx and b == funcy
 
 def test_scene_setvelos():
     scene1.set_init_velo(1,-2)

@@ -19,22 +19,22 @@
 \newcounter{stepnum}
 
 \title{Assignment 2 Solution}
-\author{Your Name}
+\author{Alan Scott}
 \date{\today}
 
 \begin {document}
 
 \maketitle
 
-This report discusses the testing phase for .... It also discusses the results
+This report discusses the testing phase for Assignment 2. It also discusses the results
 of running the same tests on the partner files. The assignment specifications
 are then critiqued and the requested discussion questions are answered.
 
 \section{Testing of the Original Program}
-
+Both the CircleT and TriangleT programs were put through the same tests. For each method, the output of each getter method were tested against the value that was inputted while creating the object (the exception being for the moments of inertia, which were calculated based on formulas). Only a generic input was necessary for each of these methods, as there was no restrictions or possibilities of error when running each method. However, there were restrictions placed in the constructors. This was tested by checking for a raised exception during the construction of the objects. The BodyT module was subjected to very similar tests. Each of the getter methods only had a single test due to a lack of restrictions on their operation. The constructor had two restrictions on its operations, and both were tested, one with a case with mismatching input lengths, and another with negative masses. These tests checked for a ValueError, which was the expected output for incorrect entries. The last module tested was Scene. The getter methods were tested with generic cases, since they did not have restrictions on their operations, or the potential to create errors. The setter methods were tested using the getter methods. In this case, they were simple comparisons of the outputted values or functions. The testing of the sim() method took a different form to the rest of the functions. The method was run on a provided input function, and the output was recorded to two separate lists. Various different elements in this list were compared to expected results of previous runs. This process was aided by a function which determined if the values were acceptably close to one another, as floating point errors can often cause calculations to result in very small inaccuracies. 
 
 \section{Results of Testing Partner's Code}
-
+Immediately upon the execution of the partner code, the compiler returned a TypeError stating "Can't instantiate abstract class Scene with abstract methods cm\_x, cm\_y, m\_inert, mass". To fix this to continue with coding, I added placeholders for these abstract methods to make it run for the sake of testing. It is likely that this difference arises in the coding of Shape.py, however, I was not provided with this file, so I cannot say for certain. Other than that, the modules passed expected tests.
 
 \section{Critique of Given Design Specification}
 
@@ -43,7 +43,27 @@ are then critiqued and the requested discussion questions are answered.
 
 \begin{enumerate}[a)]
 
-\item
+\item Getters and setters should ideally be unit tested for the sake of completeness, it is not always necessary. For getter and setter methods that directly access or change a state variable, it is not really necessary. However, for methods that perform operations on the input values or output values, such as the moment of inertia methods, it is necessary to unit test, since they perform some level of calculation.
+
+\item To test the values of $F\_x$ and $F\_y$, you could test them through the forces getter. You could assign the outputs to two variables, then test each of these variables as functions. So "x,y = get\_unbal\_forces()" then test them using "x(t)" and "y(t)".
+
+\item If you wanted to compare the outputs of two plot functions, you could could generate an output file from both. You could then compare the contents of the files together, and see if they have identical contents.
+
+\item close\_enough: $\mathbb{R} \times \mathbb{R} \rightarrow \mathbb{B}$ \\
+close\_enough($x_{calc} , x_{true}$) $\equiv \frac{|x_{calc} - x_{true}|}{|x_{true}|} < \epsilon$
+
+\item It is fine for coordinates to be negative since the simulation is based on the change in coordinate values, so the actual values themselves don't matter as long as the reference point is kept constant.
+
+\item The TriangleT object is initialized with the condition $(s > 0 \land m > 0)$, so it is known initially that the invariant holds. The TriangleT class contains no methods which can alter the state of the object (ie no mutator methods), nor does it inherit any. Since the invariant holds in the initial case, and there exists no way to modify the state of the object, it must logically follow that this invariant must always hold for TriangleT.
+
+\item \texttt{sqrt\_list = [math.sqrt(x) for x in range(5,20)]}
+
+\item \texttt{def remove\_upper(string):} \\
+\text{\quad} \texttt{return "".join([letter for letter in string if letter.islower()])}
+
+\item The process of abstraction creates a model of some program, where some irrelevant details are left out. Generality involves solving more general problems which can apply to various different problems. For this reason, the more abstract a program is, the more general it tends to be as well.
+
+\item Typically, a module should be designed such that it has low coupling, and does not need to rely on many other modules. The better scenario would be for a module to be used by other modules, rather than one module using many others. This is because the individual modules would only be using a single module, which would be an instance of low coupling (good), whereas one module using many other would be high coupling (bad).
 
 \end{enumerate}
 
