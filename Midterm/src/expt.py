@@ -15,16 +15,16 @@ from SetOfInt import *
 #print()
 
 # Exercising Set of Integers
-#xs = [-9, 6, 23, 21, -5]
-#ys = list(xs)
-#ys.append(99)
-#S = SetOfInt(xs)
+xs = [-9, 6, 23, 21, -5]
+ys = list(xs)
+ys.append(99)
+S = SetOfInt(xs)
 #print("SetOfInt, is_member expt:", S.is_member(21))
 #print("SetOfInt, to_seq expt:", S.to_seq())
-#S2 = SetOfInt(ys)
-#S3 = S.union(S2)
+S2 = SetOfInt(ys)
+S3 = S.union(S2)
 #print("SetOfInt, union expt:", S3.to_seq())
-#S4 = S2.diff(S)
+S4 = S2.diff(S)
 #print("SetOfInt, diff expt:", S4.to_seq())
 #print("SetOfInt, size expt:", S4.size())
 #print("SetOfInt, size expt:", S4.empty())
