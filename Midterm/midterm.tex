@@ -59,9 +59,9 @@ MCMASTER UNIVERSITY MIDTERM EXAMINATION \hfill March 4, 2021
 
 %\begin{minipage}[t]{1.0\textwidth}
 
-NAME: \wss{Enter your name here}\\[1ex]
+NAME: \wss{Alan Scott}\\[1ex]
 
-Student ID: \wss{Enter your student number here} \\[2mm]
+Student ID: \wss{400263658} \\[2mm]
 
 \noindent
 \rule[3 mm]{\textwidth}{0.5mm}
@@ -497,10 +497,12 @@ characterize the changes; you don't actually have to make them.)
 \wss{Put your answer below.}
 
 \begin{enumerate}[a.]
-\item
-\item
-\item
-\item (BONUS)
+\item Currently, the module operates over $\mathbb{Z}$. To make this module more generic, you could change the value type to be of a generic type, which could then be inputted through a parameter in the constructor, which the operations could then range over. 
+\item To make the specification generic to Type T, the specification would need to specify the type T and Sequence of T (in place of $\mathbb{Z}$) for the Exported Access Programs, as well as making the state variable \texttt{s} of type T. The type ranges for the constructor, \texttt{union, equals, set\_to\_seq} and \texttt{complement} would have to be changed from $\mathbb{Z}$ to T. Complement would also need to be modified to work over the range of every element in T instead of $\mathbb{Z}$.
+\item In order for T to be a valid type, there must be a defined relationship for equivalence between two elements in T in order to have some basis of comparison between elements of the type. 
+\item (BONUS) \\
+t\_equals: T $\times$ T \\
+t\_equals($t_1,t_2$) $\equiv (t_1 = t_2)$
 \end{enumerate}
 
 \end{minipage}

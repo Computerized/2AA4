@@ -29,7 +29,7 @@ class SetOfInt:
         return len(self.s)
 
     def empty(self):
-        return []
+        return len(self.s) == 0
 
     def equals(self, t):
         if len(self.to_seq()) != len(t.to_seq()):
