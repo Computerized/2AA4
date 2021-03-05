@@ -138,18 +138,10 @@ documentation, and/or Parnas's principles.
 \noindent \wss{Fill in your answer below}
 
 \begin{enumerate}[a)]
-\item Abstraction
-  \begin{itemize}
-  \item
-  \item
-  \item
-  \end{itemize}
-\item Separation of Concerns
-  \begin{itemize}
-  \item
-  \item
-  \item
-  \end{itemize}
+\item Abstraction \\
+Applying abstraction in the design process means seeking to create a model of the system without including any unnecessary details. For the initial stage, this means only taking the relevant information from the requirement docs and designing the system from that. In the design stage, this means designing the modules in the program to be as general as possible, so that they can have a wider range of use on the application level. It also outlines which routines are necessary to be accessed from within the program, and which ones are necessary to be exported. On the application level, abstraction is applied such that the user only has the information that is necessary to them, and the rest of the data is hidden from them. 
+\item Separation of Concerns \\
+The separation of concerns is applied starting at the requirements document. Here, it is employed to break the requirements into different requirements, such as different constraints (like timing and accuracy), specifications about the computer system or physical interface, or possible future changes. The separation of concerns is further applied at the design level, as this concept leads to the modularization of the system being designed. Ultimately, the separation of concerns seeks to reduce the amount of human error in the design process by making the amount of information manageable, but it can never full reduce the amount of human error. \\
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -471,7 +463,8 @@ and minimality.  Please be specific in your answer.
 \begin{itemize}
 \item \textbf{consistency}:
 \item \textbf{essentiality}:
-\item \textbf{generality}:
+\item \textbf{generality}: 
+The specification of the code is not as general as it could be. Currently, the SetOfInt module only ranges over values in type $\mathbb{Z}$. However, the methods defined in the documentation could be applied to a greater range of types, such as $\mathbb{N}$ or $\mathbb{R}$ or even other user defined types. 
 \item \textbf{minimality}:
 \end{itemize}
 
