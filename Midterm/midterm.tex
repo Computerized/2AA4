@@ -461,11 +461,12 @@ and minimality.  Please be specific in your answer.
 \wss{Put your answer for each quality below.}
 
 \begin{itemize}
-\item \textbf{consistency}:
+\item \textbf{consistency}: The module specification was very consistent. The variables and methods all had consistent naming conventions relative to their type, and errors were all handled in the same way (which is to say, none were).
 \item \textbf{essentiality}:
+Although the method \texttt{set\_to\_seq} is a local method and is not exported, it fulfils the exact same service as \texttt{to\_seq}. This is because \texttt{to\_seq} directly returns the value computed by \texttt{set\_to\_seq} without any further computation. To make the module more essential, you could just get rid of the local function and put the code inside the \texttt{to\_seq} method. 
 \item \textbf{generality}: 
 The specification of the code is not as general as it could be. Currently, the SetOfInt module only ranges over values in type $\mathbb{Z}$. However, the methods defined in the documentation could be applied to a greater range of types, such as $\mathbb{N}$ or $\mathbb{R}$ or even other user defined types. 
-\item \textbf{minimality}:
+\item \textbf{minimality}: The module can be considered to be minimal, since there is not method that provides more that one service. 
 \end{itemize}
 
 \end{minipage}
