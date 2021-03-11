@@ -1,8 +1,10 @@
 package src;
 
+import java.util.ArrayList;
+
 public class Measures{
 	
-	public double measures() {
+	public ArrayList<Double> measures() {
 		throw new UnsupportedOperationException();
 	}
 	

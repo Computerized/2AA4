@@ -1,7 +1,7 @@
 package src;
 
-public class Norm{
-	boolean normLOs, normInd, normAtt;
+public abstract class Norm{
+	static boolean normLOs, normInd, normAtt;
 	
 	public void setNorms(boolean nLOs, boolean nInd, boolean nAtt) {
 		normLOs = nLOs;
@@ -9,7 +9,7 @@ public class Norm{
 		normAtt = nAtt;
 	}
 	
-	public boolean getNLOs() {
+	public static boolean getNLOs() {
 		return normLOs;
 	}
 	
