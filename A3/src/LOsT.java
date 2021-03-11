@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-public class LOsT extends Measures{
+public class LOsT implements Measures{
 	String name;
 	int n_blw, n_mrg, n_mts, n_exc;
 	
@@ -27,8 +27,10 @@ public class LOsT extends Measures{
 	
 	@Override
 	public ArrayList<Double> measures(){
-		if (Norm.getNLOs()) {
-			
+		ArrayList<Double> list = new ArrayList<Double>();
+		if (!Norm.getNLOs()) {
+			return list;
 		}
+		return Services.normal(list);
 	}
 }

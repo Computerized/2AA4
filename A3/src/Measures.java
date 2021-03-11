@@ -2,17 +2,17 @@ package src;
 
 import java.util.ArrayList;
 
-public class Measures{
+public interface Measures{
 	
-	public ArrayList<Double> measures() {
+	public default ArrayList<Double> measures() {
 		throw new UnsupportedOperationException();
 	}
 	
-	public double measures(IndicatorT ind) {
+	public default double measures(IndicatorT ind) {
 		throw new UnsupportedOperationException();
 	}
 	
-	public double measures(AttributeT att) {
+	public default double measures(AttributeT att) {
 		throw new UnsupportedOperationException();
 	}
 }
