@@ -4,7 +4,7 @@ public abstract class Norm{
 	
 	static boolean normLOs, normInd, normAtt;
 	
-	public void setNorms(boolean nLOs, boolean nInd, boolean nAtt) {
+	public static void setNorms(boolean nLOs, boolean nInd, boolean nAtt) {
 		normLOs = nLOs;
 		normInd = nInd;
 		normAtt = nAtt;
@@ -14,23 +14,23 @@ public abstract class Norm{
 		return normLOs;
 	}
 	
-	public boolean getNInd() {
+	public static boolean getNInd() {
 		return normInd;
 	}
 	
-	public boolean getNAtt() {
+	public static boolean getNAtt() {
 		return normAtt;
 	}
 	
-	public void setNLOs(boolean nLOs) {
+	public static void setNLOs(boolean nLOs) {
 		normLOs = nLOs;
 	}
 	
-	public void NInd(boolean nInd) {
+	public static void NInd(boolean nInd) {
 		normInd = nInd;
 	}
 	
-	public void setNAtt(boolean nAtt) {
+	public static void setNAtt(boolean nAtt) {
 		normAtt = nAtt;
 	}
 }

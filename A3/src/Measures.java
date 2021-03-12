@@ -1,10 +1,8 @@
 package src;
 
-import java.util.ArrayList;
-
 public interface Measures{
 	
-	public default ArrayList<Double> measures() {
+	public default double [] measures() {
 		throw new UnsupportedOperationException();
 	}
 	

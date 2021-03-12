@@ -26,8 +26,8 @@ public class LOsT implements Measures{
 	}
 	
 	@Override
-	public ArrayList<Double> measures(){
-		ArrayList<Double> list = new ArrayList<Double>();
+	public double [] measures(){
+		double [] list = {n_blw,n_mrg,n_mts,n_exc};
 		if (!Norm.getNLOs()) {
 			return list;
 		}

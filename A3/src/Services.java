@@ -1,20 +1,19 @@
 package src;
-import java.util.ArrayList;
 
 public class Services{
 	
-	public static ArrayList<Double> normal(ArrayList<Double> v){
+	public static double[] normal(double[] v){
 		double s = sum(v);
-		for (int i = 0; i > v.size(); i++) {
-			v.set(i, v.get(i)/s);
+		for (int i = 0; i > v.length; i++) {
+			v[i] = v[i]/s;
 		}
 		return v;
 	}
 	
-	private static double sum(ArrayList<Double> x) {
+	private static double sum(double [] x) {
 		double s = 0.0;
-		for (int i = 0; i < x.size(); i++) {
-			s += x.get(i);
+		for (int i = 0; i < x.length; i++) {
+			s += x[i];
 		}
 		return s;
 	}

@@ -17,42 +17,42 @@ public class A3Example
 {
    public static void main(String[] args) {
 
-      // //Exercise IndicatorT Module
-      // IndicatorT[] SE2AA4_indicators = new IndicatorT[] {IndicatorT.math, IndicatorT.specEngKnow, IndicatorT.assumpt,
-      //                                                IndicatorT.suitableFund, IndicatorT.recogTheory, IndicatorT.modelSelect,
-      //                                                IndicatorT.estOutcomes, IndicatorT.desProcess, IndicatorT.desPrinciples,
-      //                                                IndicatorT.openEnded, IndicatorT.tools, IndicatorT.engInSoc,
-      //                                                IndicatorT.awarePEO};
-      // IndicatorT[] SE2C03_indicators = new IndicatorT[] {IndicatorT.desPrinciples};
-      // IndicatorT[] SE3A04_indicators = new IndicatorT[] {IndicatorT.standards, IndicatorT.healthSafety};
-      // IndicatorT[] Unused_indicators = new IndicatorT[] {IndicatorT.ideaGeneration, IndicatorT.tools};
+      //Exercise IndicatorT Module
+      IndicatorT[] SE2AA4_indicators = new IndicatorT[] {IndicatorT.math, IndicatorT.specEngKnow, IndicatorT.assumpt,
+                                                      IndicatorT.suitableFund, IndicatorT.recogTheory, IndicatorT.modelSelect,
+                                                      IndicatorT.estOutcomes, IndicatorT.desProcess, IndicatorT.desPrinciples,
+                                                      IndicatorT.openEnded, IndicatorT.tools, IndicatorT.engInSoc,
+                                                      IndicatorT.awarePEO};
+      IndicatorT[] SE2C03_indicators = new IndicatorT[] {IndicatorT.desPrinciples};
+      IndicatorT[] SE3A04_indicators = new IndicatorT[] {IndicatorT.standards, IndicatorT.healthSafety};
+      IndicatorT[] Unused_indicators = new IndicatorT[] {IndicatorT.ideaGeneration, IndicatorT.tools};
 
-      // //Excercise AttributeT Module
-      // AttributeT Know = new AttributeT("Knowledge Base for Engineering", new IndicatorT[] {IndicatorT.math, IndicatorT.specEngKnow});
-      // AttributeT ProbAnalysis = new AttributeT("Problem Analysis", new IndicatorT[] {IndicatorT.assumpt, IndicatorT.suitableFund});
-      // AttributeT Investigation = new AttributeT("Investigation", new IndicatorT[] {IndicatorT.recogTheory, IndicatorT.modelSelect,
-      //                                                                              IndicatorT.estOutcomes});
+      //Excercise AttributeT Module
+      AttributeT Know = new AttributeT("Knowledge Base for Engineering", new IndicatorT[] {IndicatorT.math, IndicatorT.specEngKnow});
+      AttributeT ProbAnalysis = new AttributeT("Problem Analysis", new IndicatorT[] {IndicatorT.assumpt, IndicatorT.suitableFund});
+      AttributeT Investigation = new AttributeT("Investigation", new IndicatorT[] {IndicatorT.recogTheory, IndicatorT.modelSelect,
+                                                                                   IndicatorT.estOutcomes});
 
-      // AttributeT Design = new AttributeT("Design", new IndicatorT[] {IndicatorT.desProcess, IndicatorT.desPrinciples,
-      //                                                                IndicatorT.openEnded, IndicatorT.ideaGeneration,
-      //                                                                IndicatorT.healthSafety, IndicatorT.standards});
+      AttributeT Design = new AttributeT("Design", new IndicatorT[] {IndicatorT.desProcess, IndicatorT.desPrinciples,
+                                                                     IndicatorT.openEnded, IndicatorT.ideaGeneration,
+                                                                     IndicatorT.healthSafety, IndicatorT.standards});
 
-      // AttributeT Tools = new AttributeT("Use of Engineering Tools", new IndicatorT[] {IndicatorT.tools});
-      // AttributeT Professionalism = new AttributeT("Professionalism", new IndicatorT[] {IndicatorT.engInSoc, IndicatorT.awarePEO});
-      // System.out.format("\nAttribute Name for Tools: " + Tools.getName() + "\n");
-      // System.out.format("Attribute Indicators Design: " + Arrays.toString(Design.getIndicators()) + "\n");
+      AttributeT Tools = new AttributeT("Use of Engineering Tools", new IndicatorT[] {IndicatorT.tools});
+      AttributeT Professionalism = new AttributeT("Professionalism", new IndicatorT[] {IndicatorT.engInSoc, IndicatorT.awarePEO});
+      System.out.format("\nAttribute Name for Tools: " + Tools.getName() + "\n");
+      System.out.format("Attribute Indicators Design: " + Arrays.toString(Design.getIndicators()) + "\n");
 
-      // //Excercise Norm Module
-      // Norm.setNorms(false, false, false);
-      // System.out.format("\nNorm getNLOs: " + Norm.getNLOs() + "\n");
+      //Excercise Norm Module
+      Norm.setNorms(false, false, false);
+      System.out.format("\nNorm getNLOs: " + Norm.getNLOs() + "\n");
 
-      // //Exercise Learning Outcomes Module
-      // LOsT LO1 = new LOsT("topic 1", 23, 45, 56, 89);
-      // LOsT LO2 = new LOsT("topic 2", 15, 6, 78, 4);
+      //Exercise Learning Outcomes Module
+      LOsT LO1 = new LOsT("topic 1", 23, 45, 56, 89);
+      LOsT LO2 = new LOsT("topic 2", 15, 6, 78, 4);
 
-      // System.out.format("\nL01 getName: " + LO1.getName() + "\n"); 
-      // System.out.format("L01 == L02: " + LO1.equals(LO2) + "\n");
-      // System.out.format("measures = " + Arrays.toString(LO1.measures()) + "\n");
+      System.out.format("\nL01 getName: " + LO1.getName() + "\n"); 
+      System.out.format("L01 == L02: " + LO1.equals(LO2) + "\n");
+      System.out.format("measures = " + Arrays.toString(LO1.measures()) + "\n");
 
       // //Excercise Courses Module
       // CourseT SE2AA4 = new CourseT("Software Engineering Design 1", SE2AA4_indicators);

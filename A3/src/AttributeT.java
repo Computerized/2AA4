@@ -2,10 +2,10 @@ package src;
 import java.util.ArrayList;
 
 public class AttributeT{
-	ArrayList<IndicatorT> s = new ArrayList<IndicatorT>();
+	IndicatorT[] s;
 	String name;
 	
-	public AttributeT(String attribName, ArrayList<IndicatorT> indicators) {
+	public AttributeT(String attribName, IndicatorT[] indicators) {
 		this.name = attribName;
 		this.s = indicators;
 	}
@@ -14,7 +14,7 @@ public class AttributeT{
 		return name;
 	}
 	
-	public ArrayList<IndicatorT> getIndicators(){
+	public IndicatorT[] getIndicators(){
 		return s;
 	}
 }
