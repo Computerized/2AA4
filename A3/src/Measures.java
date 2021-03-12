@@ -6,11 +6,11 @@ public interface Measures{
 		throw new UnsupportedOperationException();
 	}
 	
-	public default double measures(IndicatorT ind) {
+	public default double[] measures(IndicatorT ind) {
 		throw new UnsupportedOperationException();
 	}
 	
-	public default double measures(AttributeT att) {
+	public default double[] measures(AttributeT att) {
 		throw new UnsupportedOperationException();
 	}
 }
