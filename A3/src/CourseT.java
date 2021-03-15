@@ -70,11 +70,8 @@ public class CourseT implements Measures{
 		return false;
 	}
 	
-	public double[] measures(IndicatorT indicator) {
-		if (Norm.getNInd()) {
-			
-			
-		}
+	public double[] measures(IndicatorT ind) {
+		return null;
 	}
 	
 	private double[] sumMeas(double[] a, double[] b) {

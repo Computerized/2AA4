@@ -12,7 +12,7 @@ public class AttributeT{
 	
 	public String getName() {
 		return name;
-	}
+	} 
 	
 	public IndicatorT[] getIndicators(){
 		return s;
