@@ -2,7 +2,7 @@ package src;
 
 public abstract class Norm{
 	
-	static boolean normLOs, normInd, normAtt;
+	private static boolean normLOs, normInd, normAtt;
 	
 	public static void setNorms(boolean nLOs, boolean nInd, boolean nAtt) {
 		normLOs = nLOs;
