@@ -104,7 +104,7 @@ public class A3Example
       P.add(SE2AA4);
       P.add(SE2C03);
       P.add(SE3A04);
-      // System.out.println("Measures for Design: " + Arrays.toString(P.measures(Design)));
+      System.out.println("Measures for Design: " + Arrays.toString(P.measures(Design)));
   }
 }
 
