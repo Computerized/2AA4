@@ -1,6 +1,6 @@
 package src;
 
-public class Norm{
+public abstract class Norm{
 	
 	private static boolean normLOs, normInd, normAtt;
 	
