@@ -99,11 +99,11 @@ public class A3Example
       System.out.println("\n2AA4 Measures for IndicatorT.desProcess: " + Arrays.toString(SE2AA4.measures(IndicatorT.desProcess)));
       System.out.println("2AA4 Measures Attribute Design: " + Arrays.toString(SE2AA4.measures(Design)));
 
-      // //Add courses to P
-      // ProgramT P = new ProgramT();
-      // P.add(SE2AA4);
-      // P.add(SE2C03);
-      // P.add(SE3A04);
+      //Add courses to P
+      ProgramT P = new ProgramT();
+      P.add(SE2AA4);
+      P.add(SE2C03);
+      P.add(SE3A04);
       // System.out.println("Measures for Design: " + Arrays.toString(P.measures(Design)));
   }
 }
