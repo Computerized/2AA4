@@ -79,25 +79,25 @@ public class A3Example
       SE2AA4.delLO(IndicatorT.math, LO2);
       System.out.println("Learning Outcomes empty: " + SE2AA4.member(IndicatorT.math, new LOsT[] {}));
 
-      // //Populate a few Courses
-      // CourseT SE2C03 = new CourseT("Data Structures and Algorithms", SE2C03_indicators);
-      // CourseT SE3A04 = new CourseT("Software Design II Large Scale Systems", SE3A04_indicators);
+      //Populate a few Courses
+      CourseT SE2C03 = new CourseT("Data Structures and Algorithms", SE2C03_indicators);
+      CourseT SE3A04 = new CourseT("Software Design II Large Scale Systems", SE3A04_indicators);
 
-      // //Adding Learning Outcomes to Courses
-      // SE2AA4.addLO(IndicatorT.desProcess, new LOsT("Recog and follow eng des process", 5, 16, 90, 60));
-      // SE2AA4.addLO(IndicatorT.desProcess, new LOsT("Modularization and interface design", 20, 8, 80, 30));
-      // SE2AA4.addLO(IndicatorT.desPrinciples, new LOsT("Software qualities", 60, 40, 50, 50));
-      // SE2AA4.addLO(IndicatorT.openEnded, new LOsT("Complete design, implement and test for a set of modules", 5, 4, 3, 2));
-      // SE2C03.addLO(IndicatorT.desPrinciples, new LOsT("Identify time/space trade-offs", 0, 4, 4, 22));
-      // SE3A04.addLO(IndicatorT.standards, new LOsT("Select among design methodologies", 80, 150, 97, 110));      
-      // SE3A04.addLO(IndicatorT.standards, new LOsT("State the design principles", 70, 120, 85, 130));
-      // SE3A04.addLO(IndicatorT.standards, new LOsT("Evaluate design solution against requirements", 200, 80, 100, 4));      
-      // SE3A04.addLO(IndicatorT.healthSafety, new LOsT("Organize and plan the development of a software system", 80, 150, 97, 110));
-      // SE3A04.addLO(IndicatorT.healthSafety, new LOsT("Select among development doc templates", 50, 50, 20, 30));
-      // SE3A04.addLO(IndicatorT.healthSafety, new LOsT("Assess the impact of a requirement on the architecture", 200, 80, 100, 4));
+      //Adding Learning Outcomes to Courses
+      SE2AA4.addLO(IndicatorT.desProcess, new LOsT("Recog and follow eng des process", 5, 16, 90, 60));
+      SE2AA4.addLO(IndicatorT.desProcess, new LOsT("Modularization and interface design", 20, 8, 80, 30));
+      SE2AA4.addLO(IndicatorT.desPrinciples, new LOsT("Software qualities", 60, 40, 50, 50));
+      SE2AA4.addLO(IndicatorT.openEnded, new LOsT("Complete design, implement and test for a set of modules", 5, 4, 3, 2));
+      SE2C03.addLO(IndicatorT.desPrinciples, new LOsT("Identify time/space trade-offs", 0, 4, 4, 22));
+      SE3A04.addLO(IndicatorT.standards, new LOsT("Select among design methodologies", 80, 150, 97, 110));      
+      SE3A04.addLO(IndicatorT.standards, new LOsT("State the design principles", 70, 120, 85, 130));
+      SE3A04.addLO(IndicatorT.standards, new LOsT("Evaluate design solution against requirements", 200, 80, 100, 4));      
+      SE3A04.addLO(IndicatorT.healthSafety, new LOsT("Organize and plan the development of a software system", 80, 150, 97, 110));
+      SE3A04.addLO(IndicatorT.healthSafety, new LOsT("Select among development doc templates", 50, 50, 20, 30));
+      SE3A04.addLO(IndicatorT.healthSafety, new LOsT("Assess the impact of a requirement on the architecture", 200, 80, 100, 4));
 
-      // System.out.println("\n2AA4 Measures for IndicatorT.desProcess: " + Arrays.toString(SE2AA4.measures(IndicatorT.desProcess)));
-      // System.out.println("2AA4 Measures Attribute Design: " + Arrays.toString(SE2AA4.measures(Design)));
+      System.out.println("\n2AA4 Measures for IndicatorT.desProcess: " + Arrays.toString(SE2AA4.measures(IndicatorT.desProcess)));
+      System.out.println("2AA4 Measures Attribute Design: " + Arrays.toString(SE2AA4.measures(Design)));
 
       // //Add courses to P
       // ProgramT P = new ProgramT();

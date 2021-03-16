@@ -86,6 +86,10 @@ public class CourseT implements Measures{
 	
 	public double[] measures(IndicatorT ind) {
 		LOsT[] los = getLOs(ind);
+		if (los == null) {
+			double [] out = {0,0,0,0};
+			return out;
+		}
 		if (los.length == 1) {
 			return (Norm.getNInd() ? Services.normal(los[0].measures()) : los[0].measures());
 		} else if (los.length > 1) {
