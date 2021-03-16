@@ -54,7 +54,7 @@ public class A3Example
       System.out.format("L01 == L02: " + LO1.equals(LO2) + "\n");
       System.out.format("measures = " + Arrays.toString(LO1.measures()) + "\n");
 
-      // //Excercise Courses Module
+      //Excercise Courses Module
       CourseT SE2AA4 = new CourseT("Software Engineering Design 1", SE2AA4_indicators);
       System.out.print("\nSE2AA4 Course Name: " + SE2AA4.getName() + "\n");
       System.out.print("SE2AA4 Indicators: " + Arrays.toString(SE2AA4.getIndicators()) + "\n");
@@ -68,16 +68,16 @@ public class A3Example
       }
       System.out.println();
 
-      // System.out.println("Measures for SE2AA4 with IndicatorT.math: " + Arrays.toString(SE2AA4.measures(IndicatorT.math)));
-      // System.out.println("Measures for SE2AA4 with Attribute Knowledge: " + Arrays.toString(SE2AA4.measures(Know)));
+      System.out.println("Measures for SE2AA4 with IndicatorT.math: " + Arrays.toString(SE2AA4.measures(IndicatorT.math)));
+      System.out.println("Measures for SE2AA4 with Attribute Knowledge: " + Arrays.toString(SE2AA4.measures(Know)));
 
-      // //Delete learning outcomes
-      // System.out.println("Pre delete L01 in SE2AA4?: " + SE2AA4.member(IndicatorT.math, new LOsT[] {LO1, LO2}));            
-      // SE2AA4.delLO(IndicatorT.math, LO1);
-      // System.out.println("Post delete L01 in SE2AA4?: " + SE2AA4.member(IndicatorT.math, new LOsT[] {LO1, LO2}));
-      // //Delete remaining learning outcome from SE2AA4 so that it is empty
-      // SE2AA4.delLO(IndicatorT.math, LO2);
-      // System.out.println("Learing Outcomes empty: " + SE2AA4.member(IndicatorT.math, new LOsT[] {}));
+      //Delete learning outcomes
+      System.out.println("Pre delete L01 in SE2AA4?: " + SE2AA4.member(IndicatorT.math, new LOsT[] {LO1, LO2}));            
+      SE2AA4.delLO(IndicatorT.math, LO1);
+      System.out.println("Post delete L01 in SE2AA4?: " + SE2AA4.member(IndicatorT.math, new LOsT[] {LO1, LO2}));
+      //Delete remaining learning outcome from SE2AA4 so that it is empty
+      SE2AA4.delLO(IndicatorT.math, LO2);
+      System.out.println("Learning Outcomes empty: " + SE2AA4.member(IndicatorT.math, new LOsT[] {}));
 
       // //Populate a few Courses
       // CourseT SE2C03 = new CourseT("Data Structures and Algorithms", SE2C03_indicators);

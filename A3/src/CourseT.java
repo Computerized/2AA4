@@ -68,17 +68,20 @@ public class CourseT implements Measures{
 	}
 	
 	public boolean member(IndicatorT indicator, LOsT[] outcomes) {
-		for (int i = 0; i < m.size(); i++) {
-			if (m.get(i).ind == indicator) {
-				for (LOsT lost : outcomes) {
-					if (!m.get(i).LOs.contains(lost)){
-						break;
-					}
-					return true;
-				}
+		ArrayList<LOsT> temp = null;
+		for (MapInd2LOsT mi : m) {
+			if (mi.ind == indicator) {
+				temp = mi.LOs;
+				break;
 			}
 		}
-		return false;
+		if (!(temp != null && outcomes.length == temp.size()))
+			return false;
+		
+		for (LOsT out : outcomes)
+			if (!temp.contains(out))
+				return false;
+		return true;
 	}
 	
 	public double[] measures(IndicatorT ind) {
@@ -92,7 +95,8 @@ public class CourseT implements Measures{
 			}
 			return (Norm.getNInd() ? Services.normal(doubles) : doubles);
 		}
-		return null;
+		double [] out = {0,0,0,0};
+		return out;
 	}
 	
 	public double[] measures(AttributeT att) {
@@ -106,8 +110,8 @@ public class CourseT implements Measures{
 			}
 			return (Norm.getNAtt() ? Services.normal(doubles) : doubles);
 		}
-		
-		return null;
+		double [] out = {0,0,0,0};
+		return out;
 	}
 	
 	private double[] sumMeas(double[] a, double[] b) {
