@@ -3,8 +3,8 @@ package src;
 import java.util.ArrayList;
 
 public class CourseT implements Measures{
-	String name;
-	ArrayList<MapInd2LOsT> m = new ArrayList<MapInd2LOsT>();
+	public String name;
+	public ArrayList<MapInd2LOsT> m = new ArrayList<MapInd2LOsT>();
 	
 	private class MapInd2LOsT{
 		IndicatorT ind; ArrayList<LOsT> LOs;
@@ -90,12 +90,23 @@ public class CourseT implements Measures{
 			for (LOsT l : los) {
 				doubles = sumMeas(doubles,l.measures());
 			}
-			return doubles;
+			return (Norm.getNInd() ? Services.normal(doubles) : doubles);
 		}
 		return null;
 	}
 	
 	public double[] measures(AttributeT att) {
+		IndicatorT[] i = att.getIndicators();
+		if (i.length == 1) {
+			return measures(i[0]);
+		} else if (i.length > 1) {
+			double[] doubles = {0,0,0,0};
+			for (IndicatorT ind : i) {
+				doubles = sumMeas(doubles,measures(ind));
+			}
+			return (Norm.getNAtt() ? Services.normal(doubles) : doubles);
+		}
+		
 		return null;
 	}
 	
