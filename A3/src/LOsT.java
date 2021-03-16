@@ -9,6 +9,8 @@ public class LOsT implements Measures{
 	public LOsT(String topic, int nblw, int nmrg, int nmts, int nexc) {
 		if ((nblw < 0) || (nmrg < 0) || (nmts < 0) || (nexc < 0)) {
 			throw new IllegalArgumentException();
+		} else if (nmrg == 0 && nblw == 0 && nmts == 0 && nexc == 0) {
+			throw new IllegalArgumentException();
 		}
 		name = topic;
 		n_blw = nblw;
