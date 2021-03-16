@@ -105,6 +105,11 @@ public class A3Example
       P.add(SE2C03);
       P.add(SE3A04);
       System.out.println("Measures for Design: " + Arrays.toString(P.measures(Design)));
+      
+      LOsT lost = new LOsT("",1,2,3,4);
+      Norm.setNLOs(false);
+      System.out.println(Arrays.toString(lost.measures()));
+      System.out.println(Arrays.toString(Services.normal(lost.measures())));
   }
 }
 
