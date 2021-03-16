@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CourseT implements Measures{
 	String name;
-	MapInd2LOsT[] m;
+	ArrayList<MapInd2LOsT> m = new ArrayList<MapInd2LOsT>();
 	
 	private class MapInd2LOsT{
 		IndicatorT ind; ArrayList<LOsT> LOs;
@@ -15,9 +15,8 @@ public class CourseT implements Measures{
 	
 	public CourseT(String courseName, IndicatorT[] indicators) {
 		name = courseName;
-		MapInd2LOsT[] arr = new MapInd2LOsT[indicators.length];
-		for (int i = 0; i < indicators.length; i++) {
-			arr[i] = new MapInd2LOsT(indicators[i], new ArrayList<LOsT>());
+		for (IndicatorT ind : indicators) {
+			m.add(new MapInd2LOsT(ind, new ArrayList<LOsT>()));
 		}
 	}
 	
@@ -26,51 +25,77 @@ public class CourseT implements Measures{
 	}
 	
 	public IndicatorT[] getIndicators() {
-		IndicatorT[] indT = new IndicatorT[m.length];
-		for (int i = 0; i < m.length; i++) {
-			indT[i] = m[i].ind;
+		IndicatorT[] indT = new IndicatorT[m.size()];
+		for (int i = 0; i < m.size(); i++) {
+			indT[i] = m.get(i).ind;
 		}
 		return indT;
 	}
 	
 	public LOsT[] getLOs(IndicatorT indicator) {
+		LOsT [] out = null;
+		ArrayList<LOsT> temp = new ArrayList<LOsT>();
+		for (MapInd2LOsT h: m) {
+			if (h.ind == indicator) {
+				temp = h.LOs;
+				out = new LOsT[temp.size()];
+				for (int i = 0; i < out.length; i++) {
+					out[i] = temp.get(i);
+				}
+				return out;
+			}
+		}
 		
-		return null;
+		return out;
 	}
 	
 	public void addLO(IndicatorT indicator, LOsT outcome) {
-		for (int i = 0; i < m.length; i++) {
-			if (m[i].ind == indicator) {
-				m[i].LOs.add(outcome);
+		for (int i = 0; i < m.size(); i++) {
+			if (m.get(i).ind == indicator) {
+				m.get(i).LOs.add(outcome);
 			}
 		}
 	}
 	
 	public void delLO(IndicatorT indicator, LOsT outcome) {
-		for (int i = 0; i < m.length; i++) {
-			if (m[i].ind == indicator) {
-				if (m[i].LOs.contains(outcome)) {
-					m[i].LOs.remove(outcome);
+		for (int i = 0; i < m.size(); i++) {
+			if (m.get(i).ind == indicator) {
+				if (m.get(i).LOs.contains(outcome)) {
+					m.get(i).LOs.remove(outcome);
 				}
 			}
 		}
 	}
 	
 	public boolean member(IndicatorT indicator, LOsT[] outcomes) {
-		for (int i = 0; i < m.length; i ++) {
-			if (m[i].ind == indicator) {
-				for (int j = 0; j < outcomes.length; i++) {
-					if (!m[i].LOs.contains(outcomes[j])) {
+		for (int i = 0; i < m.size(); i++) {
+			if (m.get(i).ind == indicator) {
+				for (LOsT lost : outcomes) {
+					if (!m.get(i).LOs.contains(lost)){
 						break;
 					}
+					return true;
 				}
-				return true;
 			}
 		}
 		return false;
 	}
 	
 	public double[] measures(IndicatorT ind) {
+		LOsT[] los = getLOs(ind);
+		if (los.length == 1) {
+			return (Norm.getNInd() ? Services.normal(los[0].measures()) : los[0].measures());
+		} else if (los.length > 1) {
+			double [] doubles = {0,0,0,0};
+			for (LOsT l : los) {
+				doubles = sumMeas(doubles,l.measures());
+			}
+			return doubles;
+		}
+		return null;
+	}
+	
+	public double[] measures(AttributeT att) {
 		return null;
 	}
 	

@@ -55,18 +55,18 @@ public class A3Example
       System.out.format("measures = " + Arrays.toString(LO1.measures()) + "\n");
 
       // //Excercise Courses Module
-      // CourseT SE2AA4 = new CourseT("Software Engineering Design 1", SE2AA4_indicators);
-      // System.out.print("\nSE2AA4 Course Name: " + SE2AA4.getName() + "\n");
-      // System.out.print("SE2AA4 Indicators: " + Arrays.toString(SE2AA4.getIndicators()) + "\n");
+      CourseT SE2AA4 = new CourseT("Software Engineering Design 1", SE2AA4_indicators);
+      System.out.print("\nSE2AA4 Course Name: " + SE2AA4.getName() + "\n");
+      System.out.print("SE2AA4 Indicators: " + Arrays.toString(SE2AA4.getIndicators()) + "\n");
 
-      // SE2AA4.addLO(IndicatorT.math, LO1);
-      // SE2AA4.addLO(IndicatorT.math, LO2);
+      SE2AA4.addLO(IndicatorT.math, LO1);
+      SE2AA4.addLO(IndicatorT.math, LO2);
       
-      // System.out.print("Learning Outcomes for math indicator for " + SE2AA4.getName() + ": ");
-      // for (LOsT outcome : SE2AA4.getLOs(IndicatorT.math)) {
-      //     System.out.print(outcome.getName() + " ");
-      // }
-      // System.out.println();
+      System.out.print("Learning Outcomes for math indicator for " + SE2AA4.getName() + ": ");
+      for (LOsT outcome : SE2AA4.getLOs(IndicatorT.math)) {
+          System.out.print(outcome.getName() + " ");
+      }
+      System.out.println();
 
       // System.out.println("Measures for SE2AA4 with IndicatorT.math: " + Arrays.toString(SE2AA4.measures(IndicatorT.math)));
       // System.out.println("Measures for SE2AA4 with Attribute Knowledge: " + Arrays.toString(SE2AA4.measures(Know)));
