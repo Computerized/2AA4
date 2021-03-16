@@ -61,5 +61,15 @@ public class TestLOsT
     	double [] exp = {0.1,0.2,0.3,0.4};
     	assertTrue(Arrays.equals(lost1.measures(), exp));
     }
+    
+    @Test (expected=UnsupportedOperationException.class)
+    public void testUnsupportedMeasuresInd() {
+    	lost1.measures(IndicatorT.assumpt);
+    }
+    
+    @Test (expected=UnsupportedOperationException.class)
+    public void testUnsupportedMeasuresAtt() {
+    	lost1.measures(new AttributeT("",new IndicatorT[0]));
+    }
 
 }
