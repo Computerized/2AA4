@@ -17,10 +17,12 @@ public class TestCourseT
 	private final String courseName = "Course Name";
 	private final IndicatorT [] inds = {IndicatorT.engInSoc, IndicatorT.openEnded, IndicatorT.tools};
 	private CourseT course;
+	LOsT outcome;
 	
 	@Before
 	public void setUp() {
 		course = new CourseT(courseName, inds);
+		outcome = new LOsT("Test",1,2,3,4);
 	}
 
 	@Test
@@ -29,5 +31,61 @@ public class TestCourseT
         IndicatorT [] indsOut = course.getIndicators();
         assertTrue(Arrays.equals(indsOut, inds));
     }
-
+	
+	@Test
+	public void testGetLOs() {
+		LOsT [] outcome = {new LOsT("LOsTTest",1,2,3,4)};
+		course.addLO(IndicatorT.engInSoc, outcome[0]);
+		LOsT[] newOutcome = course.getLOs(IndicatorT.engInSoc);
+		assertTrue(Arrays.equals(outcome, newOutcome));
+	}
+	
+	@Test
+	public void testAddLOs() {
+		LOsT [] outcome = {this.outcome};
+		course.addLO(IndicatorT.engInSoc, this.outcome);
+		LOsT[] newOutcome = course.getLOs(IndicatorT.engInSoc);
+		assertTrue(Arrays.equals(outcome, newOutcome));
+	}
+	
+	@Test
+	public void testDelLOs() {
+		course.addLO(IndicatorT.engInSoc, outcome);
+		LOsT [] before = course.getLOs(IndicatorT.engInSoc);
+		course.delLO(IndicatorT.engInSoc, outcome);
+		LOsT [] after = course.getLOs(IndicatorT.engInSoc);
+		assertFalse(Arrays.equals(before, after));
+	}
+	
+	@Test
+	public void testDelLOsEmpty() {
+		LOsT [] before = course.getLOs(IndicatorT.engInSoc);
+		course.delLO(IndicatorT.engInSoc, outcome);
+		LOsT [] after = course.getLOs(IndicatorT.engInSoc);
+		assertTrue(Arrays.equals(before, after));
+	}
+	
+	@Test
+	public void testMember() {
+		course.addLO(IndicatorT.engInSoc, outcome);
+		LOsT [] losts = {outcome};
+		assertTrue(course.member(IndicatorT.engInSoc, losts));
+	}
+	
+	@Test
+	public void testNotMember() {
+		LOsT [] losts = {outcome};
+		assertFalse(course.member(IndicatorT.engInSoc, losts));
+	}
+	
+	@Test
+	public void testMemberEmpty() {
+		LOsT [] losts = {outcome};
+		assertTrue(course.member(IndicatorT.engInSoc, new LOsT[0]));
+	}
+	
+	@Test
+	public void testMeasureInd() {
+		
+	}
 }
