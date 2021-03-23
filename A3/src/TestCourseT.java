@@ -16,13 +16,15 @@ public class TestCourseT
 {
 	private final String courseName = "Course Name";
 	private final IndicatorT [] inds = {IndicatorT.engInSoc, IndicatorT.openEnded, IndicatorT.tools};
+	private LOsT outcome;
 	private CourseT course;
-	LOsT outcome;
 	
 	@Before
 	public void setUp() {
 		course = new CourseT(courseName, inds);
 		outcome = new LOsT("Test",1,2,3,4);
+		Norm.setNInd(true);
+		Norm.setNAtt(true);
 	}
 
 	@Test
@@ -80,12 +82,12 @@ public class TestCourseT
 	
 	@Test
 	public void testMemberEmpty() {
-		LOsT [] losts = {outcome};
 		assertTrue(course.member(IndicatorT.engInSoc, new LOsT[0]));
 	}
 	
 	@Test
-	public void testMeasureInd() {
+	public void testMeasureIndNormTrue() {
 		
+		LOsT [] losts = {outcome};
 	}
 }

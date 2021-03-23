@@ -26,7 +26,7 @@ public abstract class Norm{
 		normLOs = nLOs;
 	}
 	
-	public static void NInd(boolean nInd) {
+	public static void setNInd(boolean nInd) {
 		normInd = nInd;
 	}
 	

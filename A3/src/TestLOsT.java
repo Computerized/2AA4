@@ -71,5 +71,7 @@ public class TestLOsT
     public void testUnsupportedMeasuresAtt() {
     	lost1.measures(new AttributeT("",new IndicatorT[0]));
     }
+    
+    
 
 }
