@@ -1,6 +1,7 @@
 package src;
 import java.util.*;
 
+@SuppressWarnings("serial")
 public class ProgramT extends HashSet<CourseT> implements Measures {
 	
 	public double[] measures (AttributeT att) {

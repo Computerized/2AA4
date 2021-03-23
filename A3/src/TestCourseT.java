@@ -87,7 +87,94 @@ public class TestCourseT
 	
 	@Test
 	public void testMeasureIndNormTrue() {
-		
-		LOsT [] losts = {outcome};
+		Norm.setNInd(true);
+		LOsT test1 = new LOsT("test1",1,1,1,1);
+		LOsT test2 = new LOsT("test2",2,2,2,2);
+		LOsT test3 = new LOsT("test3",2,2,2,2);
+		course.addLO(IndicatorT.engInSoc, test1);
+		course.addLO(IndicatorT.engInSoc, test2);
+		course.addLO(IndicatorT.engInSoc, test3);
+		double [] expected = {0.25,0.25,0.25,0.25};
+		double [] out = course.measures(IndicatorT.engInSoc);
+		assertTrue(Arrays.equals(expected, out));
+	}
+	
+	@Test
+	public void testMeasureIndNormFalse() {
+		Norm.setNInd(false);
+		LOsT test1 = new LOsT("test1",2,2,2,2);
+		LOsT test2 = new LOsT("test2",1,2,3,4);
+		LOsT test3 = new LOsT("test3",1,2,4,2);
+		course.addLO(IndicatorT.engInSoc, test1);
+		course.addLO(IndicatorT.engInSoc, test2);
+		course.addLO(IndicatorT.engInSoc, test3);
+		double [] out = course.measures(IndicatorT.engInSoc);
+		double [] expected = {4.0,6.0,9.0,8.0};
+		assertTrue(Arrays.equals(out, expected));
+	}
+	
+	@Test
+	public void testmMeasureIndEmpty() {
+		double [] out = course.measures(IndicatorT.engInSoc);
+		double [] expected = {0.0,0.0,0.0,0.0};
+		assertTrue(Arrays.equals(out, expected));
+	}
+	
+	@Test
+	public void testMeasureAttTrue() {
+		Norm.setNAtt(true);
+		LOsT test1 = new LOsT("test1",1,1,1,1);
+		LOsT test2 = new LOsT("test2",1,1,1,1);
+		LOsT test3 = new LOsT("test3",1,1,1,1);
+		course.addLO(IndicatorT.engInSoc, test1);
+		course.addLO(IndicatorT.engInSoc, test2);
+		course.addLO(IndicatorT.engInSoc, test3);
+		LOsT test4 = new LOsT("test4",1,1,1,1);
+		LOsT test5 = new LOsT("test5",1,1,1,1);
+		LOsT test6 = new LOsT("test6",1,1,1,1);
+		course.addLO(IndicatorT.openEnded, test4);
+		course.addLO(IndicatorT.openEnded, test5);
+		course.addLO(IndicatorT.openEnded, test6);
+		IndicatorT[] inds = {IndicatorT.engInSoc, IndicatorT.openEnded};
+		AttributeT att = new AttributeT("testAtt", inds);
+		double [] expected = {0.25,0.25,0.25,0.25};
+		double [] out = course.measures(att);
+		assertTrue(Arrays.equals(expected, out));
+	}
+	
+	@Test
+	public void testMeasureAttFalse() {
+		Norm.setNAtt(false);
+		LOsT test1 = new LOsT("test1",1,1,1,1);
+		LOsT test2 = new LOsT("test2",1,1,1,1);
+		LOsT test3 = new LOsT("test3",1,1,1,1);
+		course.addLO(IndicatorT.engInSoc, test1);
+		course.addLO(IndicatorT.engInSoc, test2);
+		course.addLO(IndicatorT.engInSoc, test3);
+		LOsT test4 = new LOsT("test4",1,1,1,1);
+		LOsT test5 = new LOsT("test5",1,1,1,1);
+		LOsT test6 = new LOsT("test6",1,1,1,1);
+		course.addLO(IndicatorT.openEnded, test4);
+		course.addLO(IndicatorT.openEnded, test5);
+		course.addLO(IndicatorT.openEnded, test6);
+		IndicatorT[] inds = {IndicatorT.engInSoc, IndicatorT.openEnded};
+		AttributeT att = new AttributeT("testAtt", inds);
+		double [] expected = {0.5,0.5,0.5,0.5};
+		double [] out = course.measures(att);
+		assertTrue(Arrays.equals(expected, out));
+	}
+	
+	@Test
+	public void testMeasureAttEmpty() {
+		IndicatorT[] inds = {};
+		AttributeT att = new AttributeT("testAtt", inds);
+		double [] expected = {0.0,0.0,0.0,0.0};
+		double [] out = course.measures(att);
+		assertTrue(Arrays.equals(expected, out));
+	}
+	
+	@Test (expected=UnsupportedOperationException.class)
+	public void testMeasureException() {
+		course.measures();
 	}
 }
