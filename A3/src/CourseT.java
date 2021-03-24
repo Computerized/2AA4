@@ -2,12 +2,27 @@ package src;
 
 import java.util.ArrayList;
 
+/**
+ * @brief Data type representing individual courses
+ * @details This class represents a course with a given set of indicators, each with its own
+ * 			set of learning objectives. This class contains getters and setters for the name of 
+ * 			the course, LOs, and has a method for determining membership of a configuration of
+ * 			indicators and LOs.
+ * @param courseName String name of the course
+ * @param indicators Set of IndicatorTs representing learning indicators of the course
+ */
+
 public class CourseT implements Measures{
 	public String name;
 	public ArrayList<MapInd2LOsT> m = new ArrayList<MapInd2LOsT>();
 	
+	/**
+	 * @brief Data type representing a tuple of an indicator and a corresponding set of learning objectives
+	 * @param ind IndicatorT represents the learning indicator
+	 * @param LOs set of learning goals corresponding to the given indicator
+	 */
 	private class MapInd2LOsT{
-		IndicatorT ind; ArrayList<LOsT> LOs;
+		public IndicatorT ind; public ArrayList<LOsT> LOs;
 		public MapInd2LOsT(IndicatorT ind, ArrayList<LOsT> LOs) {
 			this.ind = ind; this.LOs = LOs;
 		}
