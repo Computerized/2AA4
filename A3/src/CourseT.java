@@ -83,9 +83,9 @@ public class CourseT implements Measures{
 	}
 	
 	/**
-	 * @brief Method to add a learning goal
-	 * @param indicator
-	 * @param outcome
+	 * @brief Method to add a learning outcome to an indicator
+	 * @param indicator IndicatorT corresponding with the outcome
+	 * @param outcome corresponding outcome
 	 */
 	public void addLO(IndicatorT indicator, LOsT outcome) {
 		for (int i = 0; i < m.size(); i++) {
@@ -95,6 +95,11 @@ public class CourseT implements Measures{
 		}
 	}
 	
+	/**
+	 * @brief Method to delete a learning outcome to an indicator
+	 * @param indicator IndicatorT corresponding with the outcome
+	 * @param outcome corresponding outcome
+	 */
 	public void delLO(IndicatorT indicator, LOsT outcome) {
 		for (int i = 0; i < m.size(); i++) {
 			if (m.get(i).ind == indicator) {

@@ -52,7 +52,7 @@ public class TestProgramT {
 	
 	@Test
 	public void testMeasure() {
-		double [] expected = {20.0,20.0,20.0,20.0};
+		double [] expected = {0.25,0.25,0.25,0.25};
 		double [] out = program.measures(att);
 		assertTrue(Arrays.equals(out, expected));
 	}
@@ -63,7 +63,7 @@ public class TestProgramT {
 		IndicatorT [] inds2 = {IndicatorT.estOutcomes, IndicatorT.math};
 		AttributeT att2 = new AttributeT("", inds2);
 		double [] out = program.measures(att2);
-		assertTrue(Arrays.equals(expected, out));
+		assertTrue(Double.isNaN(out[0]));
 	}
 
 }
