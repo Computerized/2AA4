@@ -61,8 +61,12 @@ public class CourseT implements Measures{
 		return indT;
 	}
 	
+	/**
+	 * @param indicator IndicatorT corresponding to a set of learning objectives
+	 * @return set of all learning objectives
+	 */
 	public LOsT[] getLOs(IndicatorT indicator) {
-		LOsT [] out = null;
+		LOsT [] out = new LOsT[0];
 		ArrayList<LOsT> temp = new ArrayList<LOsT>();
 		for (MapInd2LOsT h: m) {
 			if (h.ind == indicator) {
@@ -78,6 +82,11 @@ public class CourseT implements Measures{
 		return out;
 	}
 	
+	/**
+	 * @brief Method to add a learning goal
+	 * @param indicator
+	 * @param outcome
+	 */
 	public void addLO(IndicatorT indicator, LOsT outcome) {
 		for (int i = 0; i < m.size(); i++) {
 			if (m.get(i).ind == indicator) {

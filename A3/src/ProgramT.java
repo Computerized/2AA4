@@ -9,7 +9,7 @@ public class ProgramT extends HashSet<CourseT> implements Measures {
 		for (CourseT c : this) {
 			outlist = sumMeas(outlist,c.measures(att));
 		}
-		return outlist;
+		return Services.normal(outlist);
 	}
 	
 	private double[] sumMeas(double[] a, double[] b) {
