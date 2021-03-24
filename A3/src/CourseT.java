@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * @details This class represents a course with a given set of indicators, each with its own
  * 			set of learning objectives. This class contains getters and setters for the name of 
  * 			the course, LOs, and has a method for determining membership of a configuration of
- * 			indicators and LOs.
+ * 			indicators and LOs. It also has a method to determine the combined values of given
+ * 			LOs. 
  * @param courseName String name of the course
  * @param indicators Set of IndicatorTs representing learning indicators of the course
  */
@@ -28,6 +29,11 @@ public class CourseT implements Measures{
 		}
 	}
 	
+	/**
+	 * @brief Constructor for CourseT. Copies indicators into blank MapInd2LOsT
+	 * @param courseName String name of the course
+	 * @param indicators set of indicators
+	 */
 	public CourseT(String courseName, IndicatorT[] indicators) {
 		name = courseName;
 		for (IndicatorT ind : indicators) {
@@ -35,10 +41,18 @@ public class CourseT implements Measures{
 		}
 	}
 	
+	/**
+	 * @brief name return method
+	 * @return String name
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * @brief indicators get method
+	 * @return set of indicators from MapInd2LOst
+	 */
 	public IndicatorT[] getIndicators() {
 		IndicatorT[] indT = new IndicatorT[m.size()];
 		for (int i = 0; i < m.size(); i++) {
