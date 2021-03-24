@@ -110,6 +110,12 @@ public class CourseT implements Measures{
 		}
 	}
 	
+	/**
+	 * @brief Method for determining a corresponding indicator-LOsTs membership in the set
+	 * @param indicator IndicatorT corresponding to a set of outcomes
+	 * @param outcomes set of learning objects corresponding to the indicator
+	 * @return true if combination exists within the course, false otherwise
+	 */
 	public boolean member(IndicatorT indicator, LOsT[] outcomes) {
 		ArrayList<LOsT> temp = null;
 		for (MapInd2LOsT mi : m) {
@@ -127,6 +133,12 @@ public class CourseT implements Measures{
 		return true;
 	}
 	
+	@Override
+	/**
+	 * @brief Method to determine the measure of a given indicator
+	 * @param ind IndicatorT that corresponds to the measured learning objectives
+	 * @return Tuple of 4 doubles corresponding to the sum of the 4 measures of the learning goals
+	 */
 	public double[] measures(IndicatorT ind) {
 		LOsT[] los = getLOs(ind);
 		if (los == null) {
@@ -146,6 +158,12 @@ public class CourseT implements Measures{
 		return out;
 	}
 	
+	@Override
+	/**
+	 * @brief Method to determine the measure of a given attribute
+	 * @param att AttributeT that corresponds to a set of IndicatorTs
+	 * @return Tuple of 4 doubles corresponding to the sum of the 4 measures of the learning goals
+	 */
 	public double[] measures(AttributeT att) {
 		IndicatorT[] i = att.getIndicators();
 		if (i.length == 1) {
@@ -161,6 +179,12 @@ public class CourseT implements Measures{
 		return out;
 	}
 	
+	/**
+	 * @brief Method to sum corresponding elements over 2 arrays
+	 * @param a first array
+	 * @param b second array
+	 * @return Sum of both arrays
+	 */
 	private double[] sumMeas(double[] a, double[] b) {
 		double[] set = new double[4];
 		set[0] = a[0] + b[0]; set[1] = a[1] + b[1]; set[2] = a[2] + b[2]; set[3] = a[3] + b[3]; 
