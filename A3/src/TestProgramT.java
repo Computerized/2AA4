@@ -23,6 +23,8 @@ public class TestProgramT {
 	
 	@Before
 	public void setUp() {
+		Norm.setNAtt(false);
+		Norm.setNInd(false);
 		course1 = new CourseT("Course 1", inds1);
 		course2 = new CourseT("Course 2", inds2);
 		course1.addLO(IndicatorT.assumpt, new LOsT("Goal 1",1,1,1,1));
@@ -52,7 +54,18 @@ public class TestProgramT {
 	public void testMeasure() {
 		double [] expected = {20.0,20.0,20.0,20.0};
 		double [] out = program.measures(att);
+		System.out.println(Arrays.toString(out));
 		assertTrue(Arrays.equals(out, expected));
+	}
+	
+	@Test
+	public void testMeasureNotExists() {
+		double [] expected = {0.0,0.0,0.0,0.0};
+		IndicatorT [] inds2 = {IndicatorT.estOutcomes, IndicatorT.math};
+		AttributeT att2 = new AttributeT("", inds2);
+		double [] out = program.measures(att2);
+		System.out.println(Arrays.toString(out));
+		assertTrue(Arrays.equals(expected, out));
 	}
 
 }
