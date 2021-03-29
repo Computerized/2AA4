@@ -3,25 +3,28 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class GUI {
+public class GUI extends JFrame{
+	boolean a = true;
+	int [][] nums = new int[4][4];
 	
-	public static void drawNums(int [][] arr) {
-		
+	public GUI (String name, int[][] nums) {
+		this.nums = nums;
+		this.setName(name);
+		this.setSize(400,425);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
 	}
 	
-	public static void drawLines(int num) {
-		
+	public void paint (Graphics g) {
+		super.paint(g);
+		// drawing grid
+		g.drawRect(25, 50, 350, 350);
+		g.drawLine(25, 225, 375, 225);
+		g.drawString("" + nums[0][0], 100, 100);
 	}
 	
-	public static void main(String[] args) {
-		JFrame JF = new JFrame("2048");
-		CustomCanvas canvas = new CustomCanvas();
-		JF.add(canvas);
-		int [][] nums = {{}};
-		JF.pack();
-		JF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JF.setVisible(true);
-		canvas.paint(canvas.getGraphics(), nums);
+	public void changeBool(boolean bool) {
+		a = bool;
 	}
 
 }

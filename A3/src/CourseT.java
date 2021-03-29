@@ -3,6 +3,8 @@ package src;
 import java.util.ArrayList;
 
 /**
+ * @file CourseT.java
+ * @author Alan Scott, scotta30, 400263658
  * @brief Data type representing individual courses
  * @details This class represents a course with a given set of indicators, each with its own
  * 			set of learning objectives. This class contains getters and setters for the name of 
