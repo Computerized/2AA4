@@ -21,7 +21,7 @@ public class testclass {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		gui.repaint();
-		grid[0][0] = 2;
+		int [][] grid2 = {{0,0,0,0},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+		gui.updateTiles(grid2);
 	}
 }
