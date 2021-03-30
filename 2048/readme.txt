@@ -1,1 +1,1 @@
-This directory contains testing for GUI for A4 using Java JFrames
+This directory contains a WIP for a half-baked implementation of 2048
