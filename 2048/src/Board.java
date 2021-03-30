@@ -27,11 +27,13 @@ public class Board {
 		return s;
 	}
 	
-	public static void main(String [] args) {
-		int [][] arr = {{0,2,0,0},{0,0,2,0},{0,0,0,0},{0,0,0,0}};
-		Board b = new Board(arr);
-		//GUI gui = new GUI(b);
-		System.out.println(b);
+	public boolean hasZero() {
+		for (int[] i : grid) {
+			for (int j : i) {
+				if (j == 0)
+					return true;
+			}
+		}
+		return false;
 	}
-
 }

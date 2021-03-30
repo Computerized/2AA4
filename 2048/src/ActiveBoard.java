@@ -177,7 +177,7 @@ public class ActiveBoard extends Board{
 					grid[1][column] = grid[1][column] + grid[0][column];
 					grid[0][column] = 0;
 				}
-			} else if (grid[2][column] == grid[1][column]) {
+			} else if (grid[2][column] == grid[1][column] && grid[1][column] != 0) {
 				grid[2][column] = grid[1][column] + grid[2][column];
 				grid[1][column] = 0;
 			} else if (grid[3][column] == grid[1][column] && grid[3][column] != 0) {
@@ -187,8 +187,8 @@ public class ActiveBoard extends Board{
 				grid[3][column] = grid[3][column] + grid[0][column];
 				grid[0][column] = 0;
 			} else if (grid[2][column] == grid[0][column] && grid[2][column] != 0) {
-				grid[2][column] = grid[2][column] + grid[1][column];
-				grid[1][column] = 0;
+				grid[2][column] = grid[2][column] + grid[0][column];
+				grid[0][column] = 0;
 			} else if (grid[0][column] == grid[1][column] && grid[0][column] != 0) {
 				grid[1][column] = grid[1][column] + grid[0][column];
 				grid[0][column] = 0;

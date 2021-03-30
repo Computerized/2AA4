@@ -14,7 +14,8 @@ public class Game {
 		AB.addRandomTwo();
 		while (true) {
 			if (AB.hasLegalMoves()) {
-				AB.addRandomTwo();
+				if (AB.hasZero())
+					AB.addRandomTwo();
 				gui.updateTiles(AB);
 			} else {
 				endGame();
