@@ -1,10 +1,12 @@
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.*;	
 import javax.swing.*;
 
 
-public class GUI extends JFrame{
+public class GUI extends JFrame implements KeyListener {
 	private int [][] nums = new int[4][4];
+	private char lastDirection = ' ';
+	boolean flag = false;
 	
 	public GUI (Board board) {
 		this.nums = board.getArray();
@@ -12,6 +14,7 @@ public class GUI extends JFrame{
 		this.setSize(400,425);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
+		this.addKeyListener(this);
 	}
 	
 	public void updateTiles(Board board) {
@@ -48,4 +51,61 @@ public class GUI extends JFrame{
 			y += 87;
 		}
 	}
+	
+	public char getDirection() {
+		char c = lastDirection;
+		resetDirection();
+		setFlag(false);
+		return c;
+	}
+	
+	public void resetDirection() {
+		lastDirection = ' ';
+	}
+	
+	private void setFlag(boolean tf) {
+		flag = tf;
+	}
+	
+	public boolean getFlag() {
+		return flag;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		return;
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		return;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent kp) {
+		setFlag(true);
+		switch(kp.getKeyCode()) {
+		case KeyEvent.VK_DOWN:
+			lastDirection = 'D';
+			setFlag(true);
+			break;
+		case KeyEvent.VK_UP:
+			lastDirection = 'U';
+			setFlag(true);
+			break;
+		case KeyEvent.VK_LEFT:
+			lastDirection = 'L';
+			setFlag(true);
+			break;
+		case KeyEvent.VK_RIGHT:
+			lastDirection = 'R';
+			setFlag(true);
+			break;
+		case KeyEvent.VK_ESCAPE:
+			lastDirection = 'E';
+			setFlag(true);
+			break;
+		}
+	}
+	
 }
