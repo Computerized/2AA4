@@ -27,7 +27,7 @@ public class ActiveBoard extends Board{
 		return false;
 	}
 	
-	public void addRandomTwo() {
+	public void addRandomTwo(boolean guarantwod) {
 		Random rand = new Random();
 		ArrayList<int[]> coords = new ArrayList<int[]>();
 		for (int i = 0; i < 4; i ++) {
@@ -39,7 +39,7 @@ public class ActiveBoard extends Board{
 			}
 		}
 		int [] coord = coords.get(rand.nextInt(coords.size())); //pick random empty space
-		grid[coord[0]][coord[1]] = (rand.nextDouble() < 0.9) ? 2 : 4; //10 % chance of getting a four
+		grid[coord[0]][coord[1]] = (rand.nextDouble() < 0.9 || guarantwod) ? 2 : 4; //10 % chance of getting a four
 	}
 	
 	public void shiftLeft() {

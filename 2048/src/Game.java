@@ -11,15 +11,9 @@ public class Game {
 	}
 	
 	public void start() {
-		AB.addRandomTwo();
+		AB.addRandomTwo(true); //first two are guaranteed to be two
+		AB.addRandomTwo(true);
 		while (true) {
-			if (AB.hasLegalMoves()) {
-				if (AB.hasZero())
-					AB.addRandomTwo();
-				gui.updateTiles(AB);
-			} else {
-				endGame();
-			}
 			char c = getUserInput();
 			switch (c) {
 			case 'U':
@@ -35,6 +29,13 @@ public class Game {
 				AB.shiftRight();
 				break;
 			case 'E':
+				endGame();
+			}
+			if (AB.hasLegalMoves()) {
+				if (AB.hasZero())
+					AB.addRandomTwo(false);
+				gui.updateTiles(AB);
+			} else {
 				endGame();
 			}
 		}
