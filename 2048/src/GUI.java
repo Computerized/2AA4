@@ -53,14 +53,12 @@ public class GUI extends JFrame implements KeyListener {
 	}
 	
 	public char getDirection() {
-		char c = lastDirection;
-		resetDirection();
-		setFlag(false);
-		return c;
+		return lastDirection;
 	}
 	
 	public void resetDirection() {
 		lastDirection = ' ';
+		flag = false;
 	}
 	
 	private void setFlag(boolean tf) {

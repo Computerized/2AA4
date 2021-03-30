@@ -1,4 +1,3 @@
-
 public class Board {
 	protected int[][] grid = new int[4][4];
 	
