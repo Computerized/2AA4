@@ -6,6 +6,7 @@ public class ActiveBoard extends Board{
 
 	public ActiveBoard(int[][] arr) {
 		super(arr);
+		score = 0;
 	}
 	
 	public boolean hasLegalMoves() {
@@ -48,25 +49,32 @@ public class ActiveBoard extends Board{
 				continue;
 			if (row[0] == row[1] && row[0] != 0) {
 				row[0] = row[0] + row[1];
+				score += row[0];
 				row[1] = 0;
 				if (row[2] == row[3] && row[2] != 0) {
 					row[2] = row[2] + row[3];
+					score += row[2];
 					row[3] = 0;
 				}
 			} else if (row[1] == row[2] && row[1] != 0) {
 				row[2] = row[1] + row[2];
+				score += row[2];
 				row[1] = 0;
 			} else if (row[0] == row[2] && row[0]!=0 && row[1] == 0) {
 				row[0] = row[0] + row[2];
+				score += row[0];
 				row[2] = 0;
 			} else if (row[0] == row[3] && row[1] == row[2] && row[2] == 0 && row[0] != 0) {	
 				row[0] = row[3] + row[0];
+				score += row[0];
 				row[3] = 0;
 			} else if (row[1] == row[3] && row[1] != 0 && row[2] == 0) {
 				row[1] = row[1] + row[3];
+				score += row[1];
 				row[3] = 0;
 			} else if (row[2] == row[3] && row[2] != 0) {
 				row[2] = row[2] + row[3];
+				score += row[2];
 				row[3] = 0;
 			}
 			
@@ -90,25 +98,32 @@ public class ActiveBoard extends Board{
 				continue;
 			if (row[3] == row[2] && row[2] != 0) {
 				row [3] = row[2] + row[3];
+				score += row[3];
 				row[2] = 0;
 				if (row[1] == row[0] && row[1] != 0) {
 					row[1] = row[0] + row[1];
+					score += row[1];
 					row[0] = 0;
 				}
 			} else if (row[1] == row[2] && row[1] != 0) {
 					row[2] = row[1] + row[2];
+					score += row[2];
 					row[1] = 0;
 			} else if (row[3] == row[1] && row[2] == 0 && row[3] != 0) {
 				row[3] = row[3] + row[1];
+				score += row[3];
 				row[1] = 0;
 			} else if (row[0] == row[3] && row[1] == row[2] && row[2] == 0 && row[0] != 0) {	
 					row[3] = row[3] + row[0];
+					score += row[3];
 					row[0] = 0;
 			} else if (row[2] == row[0] && row[1] == 0 && row[2] != 0) {
 				row[2] = row[2] + row[0];
+				score += row[2];
 				row[0] = 0;
 			} else if (row[1] == row[0] && row[0] != 0) {
 				row[1] = row[0];
+				score += row[1];
 				row[0] = 0;
 			} 
 			
@@ -131,25 +146,32 @@ public class ActiveBoard extends Board{
 				continue;
 			if (grid[0][column] == grid[1][column] && grid[1][column] != 0) {
 				grid[0][column] = grid[0][column] + grid[1][column];
+				score += grid[0][column];
 				grid[1][column] = 0;
 				if (grid[3][column] == grid[2][column] && grid[2][column] != 0) {
 					grid[2][column] = grid[2][column] + grid[3][column];
+					score += grid[2][column];
 					grid[3][column] = 0;
 				}
 			} else if (grid[2][column] == grid[1][column] && grid[2][column] != 0) {
 				grid[1][column] = grid[1][column] + grid[2][column];
-				grid[2][column] = 0; //
+				score += grid[1][column];
+				grid[2][column] = 0;
 			} else if (grid[2][column] == grid[0][column] && grid[2][column] != 0) {
 				grid[0][column] = grid[2][column] + grid[0][column];
+				score += grid[0][column];
 				grid[2][column] = 0;
 			} else if (grid[3][column] == grid[0][column] && grid[1][column] == grid[2][column] && grid[1][column] == 0 && grid[0][column] != 0) {
 				grid[0][column] = grid[3][column] + grid[0][column];
+				score += grid[0][column];
 				grid[3][column] = 0;
 			} else if (grid[3][column] == grid[1][column] && grid[3][column] != 0) {
 				grid[1][column] = grid[1][column] + grid[3][column];
+				score += grid[1][column];
 				grid[3][column] = 0;
 			} else if (grid[2][column] == grid[3][column] && grid[2][column] != 0) {
 				grid[2][column] = grid[3][column] + grid[2][column];
+				score += grid[2][column];
 				grid[3][column] = 0;
 			} 
 
@@ -172,25 +194,32 @@ public class ActiveBoard extends Board{
 				continue;
 			if (grid[3][column] == grid[2][column] && grid[3][column] != 0) {
 				grid[3][column] = grid[2][column] + grid[3][column];
+				score += grid[3][column];
 				grid[2][column] = 0;
 				if (grid[1][column] == grid[0][column] && grid[1][column] != 0) {
 					grid[1][column] = grid[1][column] + grid[0][column];
+					score += grid[1][column];
 					grid[0][column] = 0;
 				}
 			} else if (grid[2][column] == grid[1][column] && grid[1][column] != 0) {
 				grid[2][column] = grid[1][column] + grid[2][column];
+				score += grid[2][column];
 				grid[1][column] = 0;
 			} else if (grid[3][column] == grid[1][column] && grid[3][column] != 0) {
 				grid[3][column] = grid[1][column] + grid[3][column];
+				score += grid[3][column];
 				grid[1][column] = 0;
 			} else if (grid[3][column] == grid[0][column] && grid[1][column] == grid[2][column] && grid[1][column] == 0 && grid[0][column] != 0) {
 				grid[3][column] = grid[3][column] + grid[0][column];
+				score += grid[3][column];
 				grid[0][column] = 0;
 			} else if (grid[2][column] == grid[0][column] && grid[2][column] != 0) {
 				grid[2][column] = grid[2][column] + grid[0][column];
+				score += grid[2][column];
 				grid[0][column] = 0;
 			} else if (grid[0][column] == grid[1][column] && grid[0][column] != 0) {
 				grid[1][column] = grid[1][column] + grid[0][column];
+				score += grid[1][column];
 				grid[0][column] = 0;
 			} 
 			
@@ -206,9 +235,4 @@ public class ActiveBoard extends Board{
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-		
-	}
-
 }

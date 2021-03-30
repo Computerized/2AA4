@@ -41,6 +41,8 @@ public class Game {
 	}
 	
 	public void endGame() {
+		System.out.println("Game Over");
+		System.out.println("Your score was: " + AB.getScore());
 		System.exit(0);
 	}
 	
