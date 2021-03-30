@@ -4,25 +4,29 @@ import javax.swing.*;
 
 
 public class GUI extends JFrame{
-	boolean a = true;
-	int [][] nums = new int[4][4];
+	private int [][] nums = new int[4][4];
 	
-	public GUI (String name, int[][] nums) {
-		this.nums = nums;
-		this.setName(name);
+	public GUI (Board board) {
+		this.nums = board.getArray();
+		this.setName("2048");
 		this.setSize(400,425);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 	
-	public void updateTiles(int[][] arr) {
-		nums = arr;
+	public void updateTiles(Board board) {
+		nums = board.getArray();
 		this.repaint();
 	}
 	
+	@Override
+	/**
+	 * @brief Painting method
+	 * @param g Graphics interface of the JFrame
+	 */
 	public void paint (Graphics g) {
 		super.paint(g);
-		// drawing grid
+		// drawing grid	
 		g.drawRect(25, 50, 350, 350);
 		//horizontals
 		g.drawLine(25, 225, 375, 225);
@@ -44,9 +48,4 @@ public class GUI extends JFrame{
 			y += 87;
 		}
 	}
-	
-	public void changeBool(boolean bool) {
-		a = bool;
-	}
-
 }
