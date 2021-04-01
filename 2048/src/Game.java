@@ -1,13 +1,21 @@
+import java.util.Scanner;
 
 public class Game {
 	GUI gui;
 	ActiveBoard AB;
 	
 	public Game () {
+		rules();
 		int[][] nums = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
 		AB = new ActiveBoard(nums);
 		gui = new GUI(AB);
 		start();
+	}
+	
+	public void rules() {
+		System.out.println("2048");
+		System.out.println("Use the arrow keys to shift tiles");
+		System.out.println("Press ESC to end game");
 	}
 	
 	public void start() {
@@ -29,13 +37,6 @@ public class Game {
 				AB.shiftRight();
 				break;
 			case 'E':
-				endGame();
-			}
-			if (AB.hasLegalMoves()) {
-				if (AB.hasZero())
-					AB.addRandomTwo(false);
-				gui.updateTiles(AB);
-			} else {
 				endGame();
 			}
 		}

@@ -235,4 +235,43 @@ public class ActiveBoard extends Board{
 			}
 		}
 	}
+	
+	public boolean canMove(char direction) {
+		switch(direction) {
+		case 'D':
+			for (int i = 0; i < 4; i++) {
+				for (int j = 3; j > 0; j--) {
+					if ((grid[j][i] == grid[j-1][i] && grid[j][i] != 0) || (grid[j][i] == 0 && grid[j-1][i] != 0))
+						return true;
+				}
+			}
+			break;
+		case 'U':
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 3; j++) {
+					if ((grid[j][i] == grid[j+1][i] && grid[j][i] != 0) || (grid[j][i] == 0 && grid[j+1][i] != 0))
+						return true;
+				}
+			}
+			break;
+		case 'L':
+			for (int[] row : grid) {
+				for (int i = 0; i < 3; i++) {
+					if ((row[i] == row[i+1] && row[i] != 0) || (row[i] == 0 && row[i+1] != 0))
+						return true;
+				}
+			}
+			break;
+		case 'R':
+			for (int[] row : grid) {
+				for (int i = 3; i > 0; i--) {
+					if ((row[i] == row[i-1] && row[i] != 0) || (row[i] == 0 && row[i-1] != 0))
+						return true;
+				}
+			}
+			break;
+		}
+		return false;
+	}
+	
 }
