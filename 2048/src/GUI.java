@@ -10,17 +10,17 @@ import javax.swing.*;
  * 			the JFrame class, and implements the KeyListener interface.
  */
 public class GUI extends JFrame implements KeyListener {
-	private int [][] nums = new int[4][4];
-	private char lastDirection = ' ';
-	private boolean flag = false;
-	private Board board;
+	private int [][] nums = new int[4][4]; //empty board
+	private char lastDirection = ' '; //last key direction pressed
+	private boolean flag = false; //flag = true when valid input is pressed
+	private Board board; //game board
 	
 	public GUI (Board board) {
 		this.board = board;
 		this.nums = board.getArray();
 		this.setName("2048");
 		this.setSize(400,450);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //progam exits if window is forced closed
 		this.setVisible(true);
 		this.addKeyListener(this);
 	}
