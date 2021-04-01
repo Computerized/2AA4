@@ -41,7 +41,12 @@ public class ActiveBoard extends Board{
 		return false;
 	}
 	
-	public void addRandomTwo(boolean guarantwod) {
+	/**
+	 * @brief Random two adding method
+	 * @details This method adds a random two (or an occasional four) into a random blank
+	 * 			spot on the grid. 
+	 */
+	public void addRandomTwo() {
 		Random rand = new Random();
 		ArrayList<int[]> coords = new ArrayList<int[]>();
 		for (int i = 0; i < 4; i ++) {
@@ -55,7 +60,8 @@ public class ActiveBoard extends Board{
 		if (coords.size() == 0)
 			return;
 		int [] coord = coords.get(rand.nextInt(coords.size())); //pick random empty space
-		grid[coord[0]][coord[1]] = (rand.nextDouble() < 0.9 || guarantwod) ? 2 : 4; //10 % chance of getting a four
+		grid[coord[0]][coord[1]] = (rand.nextDouble() < 0.9 || coords.size() > 14) ? 2 : 4; //10 % chance of getting a four
+		//first 2 random values are guaranteed to be 2s.
 	}
 	
 	public void shiftLeft() {

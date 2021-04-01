@@ -19,8 +19,8 @@ public class Game {
 	}
 	
 	public void start() {
-		AB.addRandomTwo(true); //first two are guaranteed to be two
-		AB.addRandomTwo(true);
+		AB.addRandomTwo(); //first two are guaranteed to be two
+		AB.addRandomTwo();
 		gui.updateTiles(AB);
 		while (true) {
 			char c = getUserInput();
@@ -28,25 +28,25 @@ public class Game {
 			case 'U':
 				if (AB.canMove(c)) {
 					AB.shiftUp();
-					AB.addRandomTwo(false);
+					AB.addRandomTwo();
 				}
 				break;
 			case 'D':
 				if (AB.canMove(c)) {
 					AB.shiftDown();
-					AB.addRandomTwo(false);
+					AB.addRandomTwo();
 				}
 				break;
 			case 'L':
 				if (AB.canMove(c)) {
 					AB.shiftLeft();
-					AB.addRandomTwo(false);
+					AB.addRandomTwo();
 				}
 				break;
 			case 'R':
 				if (AB.canMove(c)) {
 					AB.shiftRight();
-					AB.addRandomTwo(false);
+					AB.addRandomTwo();
 				}
 				break;
 			case 'E':
