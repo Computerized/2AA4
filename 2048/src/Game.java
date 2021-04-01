@@ -21,29 +21,46 @@ public class Game {
 	public void start() {
 		AB.addRandomTwo(true); //first two are guaranteed to be two
 		AB.addRandomTwo(true);
+		gui.updateTiles(AB);
 		while (true) {
 			char c = getUserInput();
 			switch (c) {
 			case 'U':
-				AB.shiftUp();
+				if (AB.canMove(c)) {
+					AB.shiftUp();
+					AB.addRandomTwo(false);
+				}
 				break;
 			case 'D':
-				AB.shiftDown();
+				if (AB.canMove(c)) {
+					AB.shiftDown();
+					AB.addRandomTwo(false);
+				}
 				break;
 			case 'L':
-				AB.shiftLeft();
+				if (AB.canMove(c)) {
+					AB.shiftLeft();
+					AB.addRandomTwo(false);
+				}
 				break;
 			case 'R':
-				AB.shiftRight();
+				if (AB.canMove(c)) {
+					AB.shiftRight();
+					AB.addRandomTwo(false);
+				}
 				break;
 			case 'E':
-				endGame();
+				endGame("User Exit");
 			}
+			if (AB.hasLegalMoves())
+				gui.updateTiles(AB);
+			else
+				endGame("No Valid Moves");
 		}
 	}
 	
-	public void endGame() {
-		System.out.println("Game Over");
+	public void endGame(String reason) {
+		System.out.println("Game over by: " + reason);
 		System.out.println("Your score was: " + AB.getScore());
 		System.exit(0);
 	}

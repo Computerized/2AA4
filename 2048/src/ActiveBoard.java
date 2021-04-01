@@ -2,6 +2,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * @file ActiveBoard.java
+ * @author Alan Scott, scotta30, 400263658
+ * @brief Board operations class
+ * @details This class is a child class of Board. It specializes the Board class to
+ * 			work for 2048, and contains operations specific to the game.
+ *
+ */
 public class ActiveBoard extends Board{
 
 	public ActiveBoard(int[][] arr) {
@@ -9,6 +17,12 @@ public class ActiveBoard extends Board{
 		score = 0;
 	}
 	
+	/**
+	 * @brief Legal move detection method
+	 * @details This method checks for legal moves. A legal move exists if there exists a zero
+	 * 			within grid, or if grid contains two identical adjacent elements.
+	 * @return True if at least one legal moves exists, false otherwise
+	 */
 	public boolean hasLegalMoves() {
 		for (int row = 0; row < 4; row++) {
 			for (int column = 0; column < 4; column ++) {
@@ -38,6 +52,8 @@ public class ActiveBoard extends Board{
 				}
 			}
 		}
+		if (coords.size() == 0)
+			return;
 		int [] coord = coords.get(rand.nextInt(coords.size())); //pick random empty space
 		grid[coord[0]][coord[1]] = (rand.nextDouble() < 0.9 || guarantwod) ? 2 : 4; //10 % chance of getting a four
 	}
