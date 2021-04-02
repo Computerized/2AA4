@@ -40,6 +40,15 @@ public class Board {
 	}
 	
 	/**
+	 * @brief score mutator method
+	 * @details This method updates the score state variable
+	 * @param s int score to be set to
+	 */
+	public void setScore(int s) {
+		score = s;
+	}
+	
+	/**
 	 * this method is for quick visual display, not necessary for operation. It is not listed in
 	 * the specification for this reason, as it is just for testing and marking.
 	 */
