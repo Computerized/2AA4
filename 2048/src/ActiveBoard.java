@@ -8,6 +8,7 @@ import java.util.Random;
  * @brief Board operations class
  * @details This class is a child class of Board. It specializes the Board class to
  * 			work for 2048, and contains operations specific to the game.
+ * @param arr 2D array representing the 4x4 board
  *
  */
 public class ActiveBoard extends Board{
@@ -258,6 +259,14 @@ public class ActiveBoard extends Board{
 		}
 	}
 	
+	/**
+	 * @brief Shift legality method
+	 * @details This method determines if the 4x4 board can be shifted in a given direction. A shift can be
+	 * 			performed if 2 tiles are adjacent in the given direction or if a zero/blank appears "below"
+	 * 			a nonzero element.
+	 * @param direction Character in ['D','U','L','R'] representing directional shift.
+	 * @return True if board can be meaningfully shifted in a given direction, false otherwise.
+	 */
 	public boolean canMove(char direction) {
 		switch(direction) {
 		case 'D':

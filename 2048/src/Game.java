@@ -1,5 +1,13 @@
-import java.util.Scanner;
-
+/**
+ * @file Game.java
+ * @author Alan Scott, scotta30, 400263658
+ * @brief Game controller class
+ * @details This class handles both the GUI class and the ActiveBoard class to create a
+ * 			game of 2048. The controller takes input from the user through the GUI JFrame.
+ * 			Game processes it, and performs the necessary operations on ActiveBoard using methods
+ * 			within ActiveBoard. The Game class then passes on the ActiveBoard to the GUI class
+ * 			where it is displayed on the JFrame.
+ */
 public class Game {
 	GUI gui;
 	ActiveBoard AB;
@@ -12,6 +20,10 @@ public class Game {
 		start();
 	}
 	
+	/**
+	 * @brief Rules output method
+	 * @details This method outputs the game name and instructions to the console before the game starts
+	 */
 	public void rules() {
 		System.out.println("2048");
 		System.out.println("Use the arrow keys to shift tiles");
@@ -59,12 +71,26 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * @brief Game over method
+	 * @details This method runs when the game is over. It displays the reason for the game
+	 * 			ending (either no moves left or user termination), displays the user score, and then 
+	 * 			terminates the program normally.
+	 * @param reason Reason for game over
+	 */
 	public void endGame(String reason) {
 		System.out.println("Game over by: " + reason);
 		System.out.println("Your score was: " + AB.getScore());
-		System.exit(0);
+		System.exit(0); //exit program with normal termination
 	}
 	
+	/**
+	 * @brief User input method
+	 * @details This method gets user input. It holds the program with a loop until the direction
+	 * 			flag is set. Then, it gets the last direction from the GUI class, and resets the direction.
+	 * 			The last direction is returned.
+	 * @return Character c inputted to GUI class
+	 */
 	public char getUserInput() {
 		char c = gui.getDirection();
 		while (!gui.getFlag()) {
@@ -75,6 +101,12 @@ public class Game {
 		return c;
 	}
 	
+	/**
+	 * @brief Program delay method
+	 * @details This program uses Thread.sleep in a try-catch block to pause the program for a given
+	 * 			amount of time.
+	 * @param millis Milliseconds to pause the program
+	 */
 	private void delay(int millis) {
 		try {
 			Thread.sleep(millis);
