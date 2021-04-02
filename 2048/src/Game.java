@@ -31,12 +31,12 @@ public class Game {
 	}
 	
 	public void start() {
-		AB.addRandomTwo(); //first two are guaranteed to be two
+		AB.addRandomTwo(); //add the first 2 twos
 		AB.addRandomTwo();
-		gui.updateTiles(AB);
+		gui.updateTiles(AB); //update the GUI
 		while (true) {
-			char c = getUserInput();
-			switch (c) {
+			char c = getUserInput(); //get input from the GUI
+			switch (c) { //move depending on inputs
 			case 'U':
 				if (AB.canMove(c)) {
 					AB.shiftUp();
