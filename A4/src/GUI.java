@@ -1,4 +1,4 @@
-import java.awt.*;
+	import java.awt.*;
 import java.awt.event.*;	
 import javax.swing.*;
 
@@ -74,7 +74,7 @@ public class GUI extends JFrame implements KeyListener {
 		flag = false;
 	}
 	
-	private void setFlag(boolean tf) {
+	public void setFlag(boolean tf) {
 		flag = tf;
 	}
 	
