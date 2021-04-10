@@ -20,7 +20,7 @@ public class GUI extends JFrame implements KeyListener {
 		this.nums = board.getArray();
 		this.setName("2048");
 		this.setSize(400,450);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //progam exits if window is forced closed
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //program exits if window is forced closed
 		this.setVisible(true);
 		this.addKeyListener(this);
 	}
