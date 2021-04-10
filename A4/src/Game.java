@@ -24,13 +24,13 @@ public class Game {
 	 * @brief Rules output method
 	 * @details This method outputs the game name and instructions to the console before the game starts
 	 */
-	public void rules() {
+	private void rules() {
 		System.out.println("2048");
 		System.out.println("Use the arrow keys to shift tiles");
 		System.out.println("Press ESC to end game");
 	}
 	
-	public void start() {
+	private void start() {
 		AB.addRandomTwo(); //add the first 2 twos
 		AB.addRandomTwo();
 		gui.updateTiles(AB); //update the GUI
@@ -78,7 +78,7 @@ public class Game {
 	 * 			terminates the program normally.
 	 * @param reason Reason for game over
 	 */
-	public void endGame(String reason) {
+	private void endGame(String reason) {
 		System.out.println("Game over by: " + reason);
 		System.out.println("Your score was: " + AB.getScore());
 		System.exit(0); //exit program with normal termination
@@ -91,7 +91,7 @@ public class Game {
 	 * 			The last direction is returned.
 	 * @return Character c inputted to GUI class
 	 */
-	public char getUserInput() {
+	private char getUserInput() {
 		char c = gui.getDirection();
 		while (!gui.getFlag()) {
 			delay(300);
