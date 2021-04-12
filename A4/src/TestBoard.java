@@ -1,6 +1,12 @@
+/**
+ * Author: Alan Scott, scotta30
+ * Revised: 2021-04-12
+ * 
+ * Description: Board test module
+ */
+
 import org.junit.*;
 import static org.junit.Assert.*;
-
 import java.util.Arrays;
 
 public class TestBoard {
