@@ -65,19 +65,4 @@ public class Board {
 		}
 		return s;
 	}
-	
-	/**
-	 * @brief Zero existence method
-	 * @details This method finds if a zero exists within the 2D array
-	 * @return True if grid contains a zero element, false otherwise
-	 */
-	public boolean hasZero() {
-		for (int[] i : grid) {
-			for (int j : i) {
-				if (j == 0)
-					return true;
-			}
-		}
-		return false;
-	}
 }

@@ -26,14 +26,4 @@ public class TestBoard {
 		b1.setArray(full);
 		assertTrue(Arrays.equals(full, b1.getArray()));
 	}
-	
-	@Test
-	public void testHasZeroTrue() {
-		assertTrue(b1.hasZero());
-	}
-	
-	@Test
-	public void testHasZeroFalse() {
-		assertFalse(b2.hasZero());
-	}
 }
