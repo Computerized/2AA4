@@ -1,3 +1,5 @@
+package src;
+
 /**
  * @file Game.java
  * @author Alan Scott, scotta30, 400263658
