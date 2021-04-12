@@ -1,4 +1,4 @@
-/**
+	/**
  * @file Game.java
  * @author Alan Scott, scotta30, 400263658
  * @brief Game controller class
