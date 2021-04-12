@@ -14,10 +14,10 @@ JVM = java
 
 run:
 	cd src
-	javac Board.java
-	javac GUI.java
-	javac ActiveBoard.java
-	javac Game.java
+	javac src/Board.java
+	javac src/GUI.java
+	javac src/ActiveBoard.java
+	javac src/Game.java
 	java Game
 	cd ..
 
