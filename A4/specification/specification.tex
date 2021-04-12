@@ -55,6 +55,14 @@ The design for the 2048 game involves four separate modules. The first module is
 
 \newpage
 
+\subsection*{Program UML Diagram}
+\begin{center}
+    \includegraphics[scale=0.5]{A4UML.png}
+\end{center}
+
+
+\newpage
+
 \section* {Board Abstract Data Type}
 
 \subsection*{Module}
@@ -164,7 +172,7 @@ The grid of the 2048 board was chosen to be represented as a 2D array of size 4x
 \noindent hasZero():
 \begin{itemize}
 \item transition: none
-\item output: $\mathit{grid} := (0 \in grid)$
+\item output: $\mathit{out} := (0 \in grid)$
 \item exception: none
 \end{itemize}
 
@@ -244,13 +252,15 @@ Assuming the array input to the constructor will be of size 4x4.
 \noindent hasLegalMoves()
 \begin{itemize}
     \item transition: none
-    \item output: $out := (0 \in grid \implies True| \exists i,j | grid[i][j] = grid[i+1][j] \implies True | grid[i][j] = grid[i][j+1] \implies True| True \implies False)$
+    \item output: $out := (0 \in grid \implies True| \exists i,j | grid[i][j] = grid[i+1][j] \implies True | grid[i][j] = grid[i][j+1] \implies True| True \implies False)$ \\
+    \# if a given 2D grid contains a zero or two adjacent identical values, the it is possible for a legal move to be made.
     \item exception: none
 \end{itemize}
 
 \noindent addRandomTwo()
 \begin{itemize}
-    \item transition: $(\exists i,j | 0 \leq i \leq 3,0 \leq j \leq 3 | grid[i][j] = 0) \land grid[i][j] = (randInt() < 0.9 \implies 2 | True \implies 4)$
+    \item transition: $(\exists i,j | 0 \leq i \leq 3,0 \leq j \leq 3 | grid[i][j] = 0) \land grid[i][j] = (randInt() < 0.9 \implies 2 | True \implies 4)$ \\
+    \# choose a random element $grid[i][j]$ which equals zero and set it to 2, with a 10\% chance of setting it to 4.
     \item output: none
     \item exception: none
 \end{itemize}
@@ -294,7 +304,8 @@ Assuming the array input to the constructor will be of size 4x4.
     $(direction = "D") \implies (\exists i,j| 0 \leq i,j \leq 3|(grid[i][j] = grid[i-1][j] \land grid[i][j] \neq 0) \lor (grid[i][j] = 0 \land grid[i-1] \neq 0))$ \\
     $(direction = "U") \implies (\exists i,j| 0 \leq i,j \leq 3|(grid[i][j] = grid[i+1][j] \land grid[i][j] \neq 0) \lor (grid[i][j] = 0 \land grid[i+1] \neq 0))$ \\
     $(direction = "R") \implies (\exists i,j| 0 \leq i,j \leq 3|(grid[i][j] = grid[i][j-1] \land grid[i][j] \neq 0) \lor (grid[i][j] = 0 \land grid[i][j-1] \neq 0))$ \\
-    $(direction = "L") \implies (\exists i,j| 0 \leq i,j \leq 3|(grid[i][j] = grid[i][j+1] \land grid[i][j] \neq 0) \lor (grid[i][j] = 0 \land grid[i][j+1] \neq 0))$ 
+    $(direction = "L") \implies (\exists i,j| 0 \leq i,j \leq 3|(grid[i][j] = grid[i][j+1] \land grid[i][j] \neq 0) \lor (grid[i][j] = 0 \land grid[i][j+1] \neq 0))$ \\
+    \# given a direction ['L', 'R', 'U', 'D'] corresponding to the directions [left,right,up,down], determine if there exists a zero that can be shifted into when shifting in that direction, or if values adjacent on that shift axis are the same, and can be merged.
     \item exception: none
 \end{itemize}
 
@@ -515,8 +526,8 @@ None
 
 \noindent keyPressed(kp):
 \begin{itemize}
-\item transition: none
-\item output: $out := (kp \equiv KeyEvent.VK\_DOWN \implies 'D' |kp \equiv KeyEvent.VK\_UP \implies 'U' | kp \equiv KeyEvent.VK\_LEFT \implies 'L' |kp \equiv KeyEvent.VK\_RIGHT \implies 'R'| kp \equiv KeyEvent.VK\_ESCAPE \implies 'E'| True \implies void)$
+\item transition: $lastDirection := (kp \equiv KeyEvent.VK\_DOWN \implies 'D' |kp \equiv KeyEvent.VK\_UP \implies 'U' | kp \equiv KeyEvent.VK\_LEFT \implies 'L' |kp \equiv KeyEvent.VK\_RIGHT \implies 'R'| kp \equiv KeyEvent.VK\_ESCAPE \implies 'E')$ \\
+\item output: none
 \item exception: none
 \end{itemize}
 

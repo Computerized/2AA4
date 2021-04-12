@@ -99,12 +99,12 @@ public class GUI extends JFrame implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		return; //required method; placeholder
+		return; //required method; unused and undocumented
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		return; //required method; placeholder
+		return; //required method; unused and undocumented
 	}
 
 	@Override
