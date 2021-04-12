@@ -65,23 +65,34 @@ public class GUI extends JFrame implements KeyListener {
 		}
 	}
 	
+	/**
+	 * @brief lastDirection return method
+	 * @return lastDirection the last direction inputted by user
+	 */
 	public char getDirection() {
 		return lastDirection;
 	}
 	
+	/**
+	 * @brief lastDirection set method
+	 * @param ld char lastDirection is to be set to
+	 */
 	public void setDirection(char ld) {
 		lastDirection = ld;
 	}
 	
-	public void resetDirection() {
-		lastDirection = ' ';
-		flag = false;
-	}
-	
+	/**
+	 * @brief flag set method
+	 * @param tf Boolean value to set flag to
+	 */
 	public void setFlag(boolean tf) {
 		flag = tf;
 	}
 	
+	/**
+	 * @brief flag return method
+	 * @return boolean value of the flag
+	 */
 	public boolean getFlag() {
 		return flag;
 	}
