@@ -65,6 +65,14 @@ public class ActiveBoard extends Board{
 		//first 2 random values are guaranteed to be 2s.
 	}
 	
+	/**
+	 * @brief Left board shift method
+	 * @details This method shift all elements in the grid to the left. If equal numbers shift into one
+	 * 			another, the two are combined, with priority given to the left direction. This is done 
+	 * 			by summing the two elements in the left elements place and making the right element to 0.
+	 * 			Once all the combinations are calculated, all elements in the grid are shifted left, with
+	 * 			no further merges being performed. 
+	 */
 	public void shiftLeft() {
 		for (int[] row : grid) {
 			int[] blankRow = {0,0,0,0};
@@ -114,6 +122,14 @@ public class ActiveBoard extends Board{
 		}
 	}
 	
+	/**
+	 * @brief Right board shift method
+	 * @details This method shift all elements in the grid to the right. If equal numbers shift into one
+	 * 			another, the two are combined, with priority given to the right direction. This is done 
+	 * 			by summing the two elements in the right element's place and making the left element to 0.
+	 * 			Once all the combinations are calculated, all elements in the grid are shifted right, with
+	 * 			no further merges being performed. 
+	 */
 	public void shiftRight() {
 		for (int[] row : grid) {
 			int[] blankRow = {0,0,0,0};
@@ -163,6 +179,14 @@ public class ActiveBoard extends Board{
 		}
 	}
 	
+	/**
+	 * @brief Upwards board shift method
+	 * @details This method shift all elements in the grid upwards. If equal numbers shift into one
+	 * 			another, the two are combined, with priority given to the upper element. This is done 
+	 * 			by summing the two elements in the upper element's place and making the lower element 0.
+	 * 			Once all the combinations are calculated, all elements in the grid are shifted upwards, 
+	 * 			with no further merges being performed. 
+	 */
 	public void shiftUp() {
 		for (int column = 0; column < 4; column ++) {
 			if (grid[0][column] == 0 && grid[1][column] == 0 && grid[2][column] == 0 && grid[3][column] == 0)
@@ -211,6 +235,14 @@ public class ActiveBoard extends Board{
 		}
 	}
 	
+	/**
+	 * @brief Downwards board shift method
+	 * @details This method shift all elements in the grid downwards. If equal numbers shift into one
+	 * 			another, the two are combined, with priority given to the lower element. This is done 
+	 * 			by summing the two elements in the lower element's place and making the upper element 0.
+	 * 			Once all the combinations are calculated, all elements in the grid are shifted downwards, 
+	 * 			with no further merges being performed. 
+	 */
 	public void shiftDown() {
 		for (int column = 0; column < 4; column ++) {
 			if (grid[0][column] == 0 && grid[1][column] == 0 && grid[2][column] == 0 && grid[3][column] == 0)
