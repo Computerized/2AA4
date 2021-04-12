@@ -15,7 +15,7 @@ JVM = java
 test:
 	find . -name '*.class' -exec rm -f {} \;
 	$(JC) $(JCLASS) $(JFLAGS) src/AllTests.java
-	$(JVM) $(JCLASS) org.junit.runner.JUnitCore src.AllTests
+	$(JVM) $(JCLASS) org.junit.runner.JUnitCore AllTests
 
 doc:
 	doxygen doxConfig
