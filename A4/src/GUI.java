@@ -69,6 +69,10 @@ public class GUI extends JFrame implements KeyListener {
 		return lastDirection;
 	}
 	
+	public void setDirection(char ld) {
+		lastDirection = ld;
+	}
+	
 	public void resetDirection() {
 		lastDirection = ' ';
 		flag = false;

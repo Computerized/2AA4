@@ -97,7 +97,8 @@ public class Game {
 			delay(300);
 		}
 		c = gui.getDirection();
-		gui.resetDirection();
+		gui.setFlag(false);
+		gui.setDirection(' ');
 		return c;
 	}
 	
