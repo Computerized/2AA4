@@ -13,13 +13,13 @@ JVM = java
 .PHONY: test doc expt
 
 run:
-	cd src
-	javac src/Board.java
-	javac src/GUI.java
-	javac src/ActiveBoard.java
-	javac src/Game.java
+	cd A4/src
+	javac Board.java
+	javac GUI.java
+	javac ActiveBoard.java
+	javac Game.java
 	java Game
-	cd ..
+	cd A4
 
 test:
 	find . -name '*.class' -exec rm -f {} \;
