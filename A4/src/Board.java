@@ -1,5 +1,3 @@
-package src;
-
 /**
  * @author Alan Scott, scotta30, 400263658
  * @file Board.java
