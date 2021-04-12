@@ -12,15 +12,6 @@ JVM = java
 
 .PHONY: test doc expt
 
-run:
-	cd A4/src
-	javac Board.java
-	javac GUI.java
-	javac ActiveBoard.java
-	javac Game.java
-	java Game
-	cd A4
-
 test:
 	find . -name '*.class' -exec rm -f {} \;
 	$(JC) $(JCLASS) $(JFLAGS) src/AllTests.java
