@@ -14,7 +14,18 @@ public class Seq1D<T extends Comparable<T>>{
 		tieHandler = t;
 	}
 	
-	double rank (ArrayList<T> p) {
-		
+	double rank (T p) {
+		if (!s.contains(p))
+			throw new IllegalArgumentException();
+		Collections.sort(s);
+		return tieHandler.rCalc(indexSet(p,s));
+	}
+	
+	ArrayList<Integer> indexSet(T t, ArrayList<T> B){
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		for (int k = 0; k < B.size(); k++)
+			if (t.equals(B.get(k)))
+				temp.add(k);
+		return temp;
 	}
 }
