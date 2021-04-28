@@ -2,5 +2,5 @@ import java.util.ArrayList;
 
 public interface TieHandler{
 	
-	public double rCalc(int[] s);
+	public double rCalc(ArrayList<Integer> s);
 }
