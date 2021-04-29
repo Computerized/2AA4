@@ -370,7 +370,7 @@ $\mathit{Xturn}$: $\mathbb{B}$
 
 \subsubsection* {State Invariant}
 
-\wss{Place your state invariant or invariants here}\\
+\wss{Place your state invariant or invariants here} None
 
 \subsubsection* {Assumptions}
 
@@ -411,6 +411,7 @@ $exc := (\mbox{InvalidPosition}(i, j) \Rightarrow \mbox{OutOfBoundsException})$
 \noindent get\_turn():
 \begin{itemize}
 \item output: \wss{Return the cellT that corresponds to the current turn}\\
+$out := (XTurn \implies X | True \implies O)$
 
 \item exception: none
 \end{itemize}
@@ -431,6 +432,7 @@ $exc := (\mbox{InvalidPosition}(i, j) \Rightarrow \mbox{OutOfBoundsException})$
 \noindent is\_game\_over():
 \begin{itemize}
 \item output: \wss{Returns true if X or O wins, or if there are no more moves remaining}\\
+$out := (isWinner(X) \lor isWinner(O)\implies True) | \forall(x : cellT | x \in b : x \neq \mbox{FREE}) \implies True | True \implies False$
 
 \item exception: none
 \end{itemize}
@@ -452,7 +454,7 @@ InvalidPosition$(i, j) \equiv \neg ( ( 0 \leq i < \mbox{SIZE} ) \wedge ( 0 \leq 
 \wss{For the current board return the number of occurrences of the cellT
   argument}
 ~\newline
-
+count$(c) \equiv +(x : cellT | x \in b \land x = c : 1)$
 
 ~\newline
 
@@ -471,8 +473,9 @@ vertical\_win$(c, b) \equiv \exists (j : \mathbb{N} | 0 \leq j < \mbox{SIZE} : b
 \noindent \textbf{diagonal\_win} : cellT $\times$ boardT $\rightarrow$ $\mathbb{B}$\\
 ~\newline
 \wss{Returns true if one of the diagonals for the board has all of the entries
-  equal to cellT}
+  equal to cellT} 
 ~\newline
+diagonal\_win$(c, b) \equiv (\forall(i : \mathbb{N}|0 \leq i < \mbox{SIZE}: b[i,i]=c)) \lor (b[2,0]=b[1,1]=b[0,2]=c)$
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

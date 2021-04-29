@@ -16,7 +16,7 @@ public class Seq1D{
 		meanCalculator = m;
 	}
 	
-	public Double mean(ArrayList<Double> s) {
+	public Double mean() {
 		return meanCalculator.meanCalc(s);
 	}
 }
