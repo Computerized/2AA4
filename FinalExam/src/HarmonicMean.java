@@ -7,9 +7,8 @@ public class HarmonicMean implements MeanCalculator{
 	@Override
 	public Double meanCalc(ArrayList<Double> v) {
 		Double hsum = 0.0;
-		for (int i = 0; i < v.size(); i++) {
-			hsum += 1/v.get(i);
-		}
+		for (Double i : v)
+			hsum += 1/i;
 		return v.size()/hsum;
 	}
 	
