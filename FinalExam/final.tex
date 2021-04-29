@@ -140,9 +140,10 @@ written per day'' as a metric for programmer productivity?
   as required.}
 
 \begin{itemize}
-\item ALOC becomes innacurate for reusable code, as this code can often be copy-pasted, which is minimal effort on the coder's part, but produces the same number of lines.
-\item ALOC encourages the overabundance of code, which can usually lead to unnecessary and/or difficult to understand code.
-\item ALOC can vary depending on the program or the language (ie Java programs will normally lead to more lines than Python code due to the differnce in method inclusion, since Java programs use an extra line for a '\{' character.
+\item ALOC/day becomes innacurate for reusable code, as this code can often be copy-pasted, which is minimal effort on the coder's part, but produces the same number of lines.
+\item ALOC/day encourages the overabundance of code, which can usually lead to unnecessary and/or difficult to understand code.
+\item ALOC/day can vary depending on the program or the language (ie Java programs will normally lead to more lines than Python code due to the differnce in method inclusion, since Java programs use an extra line for a '\{' character.
+\item ALOC/day does not take into account the actual content of the code, as coding a more complex algorithm may take fewer lines than coding something basic (for example a 30 line algorithm will likely take more time than 50 lines of System.out.println()).
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -268,7 +269,7 @@ Given that there are 5 students per group, 4 work weeks and 5 work days per week
     along with the number of hours your team will spend on each technique, and
     the reason for selecting this technique.}
 
-Given the relatively short amount of time to test...
+Given the relatively short amount of time to test a relatively complicated program,
   
 \item \textbf{Is the oracle problem a concern for implementing your game?  Why
     or why not?  If it is a concern, how do you recommend testing your software?}
@@ -298,16 +299,14 @@ You can assume that inputs outside of the range 1 to 1000 do not occur.
 
 \begin{enumerate}
 \item What are the sets $D_i$ that partition $D$ (the input domain) into a
-  reasonable set of equivalence classes?
+  reasonable set of equivalence classes? \\
+The sets that partition D are numbers are: $x \in \{x / 7 \land \lnot x / 5\}$, $x \in \{x / 5 \land \lnot x / 7\}$, $x \in \{\lnot x / 5 \land \lnot x / 7\}$, and $x \in \{x / 5 \land x / 7\}$, where '/' represents integer divisibility.
 
-  \wss{answer here - you can answer in natural language, or using mathematical
-    notation.}
 
 \item Given the sets $D_i$, and the heuristics discussed in class, how would you
-  go about selecting test cases?
+  go about selecting test cases? \\
 
-  \wss{answer here - you don't need specific test cases; your answer should
-    characterize how all significant test cases are to be chosen.}
+The test cases would be select that there would be at least one input from each of the sets $D_i$, as this would cover the full range of normal operation. In addition, additional test cases would be conducted for inputs at and close to 1 and 1000, in order to test the expected performance at the bounds. Since the function assumes that the numbers are within [1,1000], no other numbers need be tested. 
   
 \end{enumerate}
   
