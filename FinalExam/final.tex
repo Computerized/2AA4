@@ -141,9 +141,9 @@ written per day'' as a metric for programmer productivity?
 
 \begin{itemize}
 \item ALOC/day becomes innacurate for reusable code, as this code can often be copy-pasted, which is minimal effort on the coder's part, but produces the same number of lines.
-\item ALOC/day encourages the overabundance of code, which can usually lead to unnecessary and/or difficult to understand code.
-\item ALOC/day can vary depending on the program or the language (ie Java programs will normally lead to more lines than Python code due to the differnce in method inclusion, since Java programs use an extra line for a '\{' character.
-\item ALOC/day does not take into account the actual content of the code, as coding a more complex algorithm may take fewer lines than coding something basic (for example a 30 line algorithm will likely take more time than 50 lines of System.out.println()).
+\item ALOC/day encourages the overabundance of code, which can often lead to unnecessary and/or needlessly complicated code.
+\item ALOC/day can vary depending on the program or the language (ie Java programs will normally lead to more lines than Python code due to the differnce in method inclusion, since Java programs ofthen use an extra line for a '\{' character).
+\item ALOC/day does not take into account the actual content of the code, as coding a more complex algorithm may take fewer lines than coding something basic (for example a 30 line algorithm will likely take more time to code than 50 lines of System.out.println()).
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -166,9 +166,9 @@ specification?
   word in bold at the beginning of each item.}
 
 \begin{itemize}
-\item \textbf{Abstract} - The specification specifies a given app, rather than referring to an app abstractly.
-\item \textbf{Unambiguous} - The specification is very ambiguous, as the term "easy to use" is not defined.
-\item \textbf{Validatable} - The specification is not validatable, as there is no given metric with which ease of use is to be measured.
+\item \textbf{Abstract} - The specification specifically refers to a given app, rather than referring to an app abstractly.
+\item \textbf{Unambiguous} - The specification is very ambiguous, as the term "easy to use" is not well defined.
+\item \textbf{Validatable} - The specification is not easily validatable, as there is no given metric with which ease of use is to be measured.
 \item \textbf{How to improve} - The specification could be improved by further defining the term "easy to use" and giving a way for it to be measured.
 \end{itemize}
 
@@ -233,7 +233,7 @@ The milestones can be modelled after the stages of the design process, with the 
 \item \textbf{Everything in your process should be verified, including the
     verification.  How might you verify your verification?}
 
-The process of verification can be verified with a nV report, which will verify that our verification is indeed verifying correct behaviour.
+The process of verification can be verified with a VnV report, which will verify that our verification is indeed verifying correct behaviour.
   
 \item \textbf{How do you propose verifying the installability of your game?}
 
