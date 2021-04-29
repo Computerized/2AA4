@@ -59,9 +59,9 @@ MCMASTER UNIVERSITY FINAL EXAMINATION \hfill April 28, 2021
 
 %\begin{minipage}[t]{1.0\textwidth}
 
-NAME: \wss{Enter your name here}\\[1ex]
+NAME: Alan Scott
 
-Student ID: \wss{Enter your student number here} \\[2mm]
+Student ID: 400263658
 
 \noindent
 \rule[3 mm]{\textwidth}{0.5mm}
@@ -140,7 +140,9 @@ written per day'' as a metric for programmer productivity?
   as required.}
 
 \begin{itemize}
-\item ...
+\item ALOC becomes innacurate for reusable code, as this code can often be copy-pasted, which is minimal effort on the coder's part, but produces the same number of lines.
+\item ALOC encourages the overabundance of code, which can usually lead to unnecessary and/or difficult to understand code.
+\item ALOC can vary depending on the program or the language (ie Java programs will normally lead to more lines than Python code due to the differnce in method inclusion, since Java programs use an extra line for a '\{' character.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,10 +165,10 @@ specification?
   word in bold at the beginning of each item.}
 
 \begin{itemize}
-\item \textbf{Abstract} - explanation
-\item \textbf{Unambiguous} - explanation
-\item \textbf{Validatable} - explanation
-\item \textbf{How to improve} - explanation
+\item \textbf{Abstract} - The specification specifies a given app, rather than referring to an app abstractly.
+\item \textbf{Unambiguous} - The specification is very ambiguous, as the term "easy to use" is not defined.
+\item \textbf{Validatable} - The specification is not validatable, as there is no given metric with which ease of use is to be measured.
+\item \textbf{How to improve} - The specification could be improved by further defining the term "easy to use" and giving a way for it to be measured.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,16 +192,16 @@ by secrets hierarchy.
 \item \textbf{Is this module Hardware Hiding, Software Decision Hiding or
     Behaviour Hiding?  Why?}
 
-  - answer here
+ The given module is Software Decision Hiding, since it hides an algorithm and data structure within a software module.
 
 \item \textbf{Is this a good secret?  Why?}
 
-  - answer here
+This is not a good secret as it refers to two separate things: a data structure and an algorithm.
 
 \item \textbf{Does the specification for maze tracing robot require environment
     variables?  If so, which environment variables are needed?}
 
-  - answer here
+The robot would need some environment variables representing the current position of the robot, as well as the layout of the map (along with the start and end points).
 
 \end{enumerate}
 
@@ -225,7 +227,7 @@ opponent.
   timeline for achieving these milestones do you propose?  You can indicate the
   time a milestone is reached by the number of months from the project's start date.}
 
-  - answer here
+The milestones can be modelled after the stages of the design process, with the time assigned to each relative to the time it would take to undertake them. The first half-month would be dedicated to determining what problems would be solved, and what requirements would be met. This milestone would be met with the completion of the SRS. The next month would be dedicated to coming up with the design for the program, and would reach its milestone with the completion of the MIS document. The largest portion of the time would come from the implementation phase, which would take place over a period of three months following the completion of the design stage. The milestone for this phase would be reached with a running implementation of the game (ie the code), whether or not it functions optimally. The following three months would be assigned to verification, involving a full verification and testing of the code. This milestone is complete when a full VnV report is produced. The last half month is allocated for delivery and maintenance, a milestone which is automatically met at the end of the 8 month project time.
   
 \item \textbf{Everything in your process should be verified, including the
     verification.  How might you verify your verification?}
@@ -266,12 +268,12 @@ human opponents, or locally between a human and an Artificial Intelligence
     along with the number of hours your team will spend on each technique, and
     the reason for selecting this technique.}
 
-  - answer here
+Given the relatively short amount of time to test the program, 
   
 \item \textbf{Is the oracle problem a concern for implementing your game?  Why
     or why not?  If it is a concern, how do you recommend testing your software?}
 
-  - answer here
+The oracle problem is a concern for the game, specifically for the AI portion of the game. Since the AI is meant to emulate a human player, it is very difficult to decide exactly what actions the AI should take, especially since the best moves in chess are not always immediately clear to an average person. To test the software with this concern, we could use prevous GM level games of chess, and see how closely the AI determines its moves relative to the real people, identifying any faults as we do so.
     
 \end{enumerate}
 
